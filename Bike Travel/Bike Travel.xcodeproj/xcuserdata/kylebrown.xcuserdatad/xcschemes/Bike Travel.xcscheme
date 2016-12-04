@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2BBEBC721DF3887E00894A58"
+               BlueprintIdentifier = "2BBEBCB51DF3B3E100894A58"
                BuildableName = "Bike Travel.app"
                BlueprintName = "Bike Travel"
                ReferencedContainer = "container:Bike Travel.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2BBEBC721DF3887E00894A58"
+            BlueprintIdentifier = "2BBEBCB51DF3B3E100894A58"
             BuildableName = "Bike Travel.app"
             BlueprintName = "Bike Travel"
             ReferencedContainer = "container:Bike Travel.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2BBEBC721DF3887E00894A58"
+            BlueprintIdentifier = "2BBEBCB51DF3B3E100894A58"
             BuildableName = "Bike Travel.app"
             BlueprintName = "Bike Travel"
             ReferencedContainer = "container:Bike Travel.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2BBEBC721DF3887E00894A58"
+            BlueprintIdentifier = "2BBEBCB51DF3B3E100894A58"
             BuildableName = "Bike Travel.app"
             BlueprintName = "Bike Travel"
             ReferencedContainer = "container:Bike Travel.xcodeproj">

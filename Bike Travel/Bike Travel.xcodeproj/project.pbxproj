@@ -7,92 +7,73 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2BBEBC771DF3887E00894A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEBC761DF3887E00894A58 /* AppDelegate.swift */; };
-		2BBEBC791DF3887E00894A58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEBC781DF3887E00894A58 /* ViewController.swift */; };
-		2BBEBC7C1DF3887E00894A58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEBC7A1DF3887E00894A58 /* Main.storyboard */; };
-		2BBEBC7E1DF3887E00894A58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEBC7D1DF3887E00894A58 /* Assets.xcassets */; };
-		2BBEBC811DF3887E00894A58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEBC7F1DF3887E00894A58 /* LaunchScreen.storyboard */; };
-		2BBEBC8A1DF388F900894A58 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBEBC891DF388F900894A58 /* MapKit.framework */; };
-		2BBEBC8C1DF3B08F00894A58 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBEBC8B1DF3B08F00894A58 /* CoreLocation.framework */; };
-		2BBEBC8E1DF3B34200894A58 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEBC8D1DF3B34200894A58 /* Default-568h@2x.png */; };
+		2BBEBCBA1DF3B3E100894A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEBCB91DF3B3E100894A58 /* AppDelegate.swift */; };
+		2BBEBCBC1DF3B3E100894A58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEBCBB1DF3B3E100894A58 /* ViewController.swift */; };
+		2BBEBCBF1DF3B3E100894A58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEBCBD1DF3B3E100894A58 /* Main.storyboard */; };
+		2BBEBCC11DF3B3E100894A58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEBCC01DF3B3E100894A58 /* Assets.xcassets */; };
+		2BBEBCC41DF3B3E100894A58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEBCC21DF3B3E100894A58 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2BBEBC731DF3887E00894A58 /* Bike Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bike Travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BBEBC761DF3887E00894A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2BBEBC781DF3887E00894A58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2BBEBC7B1DF3887E00894A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2BBEBC7D1DF3887E00894A58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2BBEBC801DF3887E00894A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2BBEBC821DF3887E00894A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2BBEBC891DF388F900894A58 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		2BBEBC8B1DF3B08F00894A58 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		2BBEBC8D1DF3B34200894A58 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2BBEBCB61DF3B3E100894A58 /* Bike Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bike Travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BBEBCB91DF3B3E100894A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2BBEBCBB1DF3B3E100894A58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2BBEBCBE1DF3B3E100894A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2BBEBCC01DF3B3E100894A58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BBEBCC31DF3B3E100894A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2BBEBCC51DF3B3E100894A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2BBEBC701DF3887E00894A58 /* Frameworks */ = {
+		2BBEBCB31DF3B3E100894A58 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BBEBC8C1DF3B08F00894A58 /* CoreLocation.framework in Frameworks */,
-				2BBEBC8A1DF388F900894A58 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2BBEBC6A1DF3887E00894A58 = {
+		2BBEBCAD1DF3B3E100894A58 = {
 			isa = PBXGroup;
 			children = (
-				2BBEBC8D1DF3B34200894A58 /* Default-568h@2x.png */,
-				2BBEBC751DF3887E00894A58 /* Bike Travel */,
-				2BBEBC741DF3887E00894A58 /* Products */,
-				2BBEBC881DF388F900894A58 /* Frameworks */,
+				2BBEBCB81DF3B3E100894A58 /* Bike Travel */,
+				2BBEBCB71DF3B3E100894A58 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		2BBEBC741DF3887E00894A58 /* Products */ = {
+		2BBEBCB71DF3B3E100894A58 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2BBEBC731DF3887E00894A58 /* Bike Travel.app */,
+				2BBEBCB61DF3B3E100894A58 /* Bike Travel.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2BBEBC751DF3887E00894A58 /* Bike Travel */ = {
+		2BBEBCB81DF3B3E100894A58 /* Bike Travel */ = {
 			isa = PBXGroup;
 			children = (
-				2BBEBC761DF3887E00894A58 /* AppDelegate.swift */,
-				2BBEBC781DF3887E00894A58 /* ViewController.swift */,
-				2BBEBC7A1DF3887E00894A58 /* Main.storyboard */,
-				2BBEBC7D1DF3887E00894A58 /* Assets.xcassets */,
-				2BBEBC7F1DF3887E00894A58 /* LaunchScreen.storyboard */,
-				2BBEBC821DF3887E00894A58 /* Info.plist */,
+				2BBEBCB91DF3B3E100894A58 /* AppDelegate.swift */,
+				2BBEBCBB1DF3B3E100894A58 /* ViewController.swift */,
+				2BBEBCBD1DF3B3E100894A58 /* Main.storyboard */,
+				2BBEBCC01DF3B3E100894A58 /* Assets.xcassets */,
+				2BBEBCC21DF3B3E100894A58 /* LaunchScreen.storyboard */,
+				2BBEBCC51DF3B3E100894A58 /* Info.plist */,
 			);
 			path = "Bike Travel";
-			sourceTree = "<group>";
-		};
-		2BBEBC881DF388F900894A58 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2BBEBC8B1DF3B08F00894A58 /* CoreLocation.framework */,
-				2BBEBC891DF388F900894A58 /* MapKit.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2BBEBC721DF3887E00894A58 /* Bike Travel */ = {
+		2BBEBCB51DF3B3E100894A58 /* Bike Travel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2BBEBC851DF3887E00894A58 /* Build configuration list for PBXNativeTarget "Bike Travel" */;
+			buildConfigurationList = 2BBEBCC81DF3B3E100894A58 /* Build configuration list for PBXNativeTarget "Bike Travel" */;
 			buildPhases = (
-				2BBEBC6F1DF3887E00894A58 /* Sources */,
-				2BBEBC701DF3887E00894A58 /* Frameworks */,
-				2BBEBC711DF3887E00894A58 /* Resources */,
+				2BBEBCB21DF3B3E100894A58 /* Sources */,
+				2BBEBCB31DF3B3E100894A58 /* Frameworks */,
+				2BBEBCB41DF3B3E100894A58 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -100,32 +81,27 @@
 			);
 			name = "Bike Travel";
 			productName = "Bike Travel";
-			productReference = 2BBEBC731DF3887E00894A58 /* Bike Travel.app */;
+			productReference = 2BBEBCB61DF3B3E100894A58 /* Bike Travel.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		2BBEBC6B1DF3887E00894A58 /* Project object */ = {
+		2BBEBCAE1DF3B3E100894A58 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Kyle Brown";
 				TargetAttributes = {
-					2BBEBC721DF3887E00894A58 = {
+					2BBEBCB51DF3B3E100894A58 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 6R43YP984W;
 						ProvisioningStyle = Automatic;
-						SystemCapabilities = {
-							com.apple.Maps.iOS = {
-								enabled = 1;
-							};
-						};
 					};
 				};
 			};
-			buildConfigurationList = 2BBEBC6E1DF3887E00894A58 /* Build configuration list for PBXProject "Bike Travel" */;
+			buildConfigurationList = 2BBEBCB11DF3B3E100894A58 /* Build configuration list for PBXProject "Bike Travel" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -133,55 +109,54 @@
 				en,
 				Base,
 			);
-			mainGroup = 2BBEBC6A1DF3887E00894A58;
-			productRefGroup = 2BBEBC741DF3887E00894A58 /* Products */;
+			mainGroup = 2BBEBCAD1DF3B3E100894A58;
+			productRefGroup = 2BBEBCB71DF3B3E100894A58 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2BBEBC721DF3887E00894A58 /* Bike Travel */,
+				2BBEBCB51DF3B3E100894A58 /* Bike Travel */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2BBEBC711DF3887E00894A58 /* Resources */ = {
+		2BBEBCB41DF3B3E100894A58 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BBEBC811DF3887E00894A58 /* LaunchScreen.storyboard in Resources */,
-				2BBEBC8E1DF3B34200894A58 /* Default-568h@2x.png in Resources */,
-				2BBEBC7E1DF3887E00894A58 /* Assets.xcassets in Resources */,
-				2BBEBC7C1DF3887E00894A58 /* Main.storyboard in Resources */,
+				2BBEBCC41DF3B3E100894A58 /* LaunchScreen.storyboard in Resources */,
+				2BBEBCC11DF3B3E100894A58 /* Assets.xcassets in Resources */,
+				2BBEBCBF1DF3B3E100894A58 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2BBEBC6F1DF3887E00894A58 /* Sources */ = {
+		2BBEBCB21DF3B3E100894A58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BBEBC791DF3887E00894A58 /* ViewController.swift in Sources */,
-				2BBEBC771DF3887E00894A58 /* AppDelegate.swift in Sources */,
+				2BBEBCBC1DF3B3E100894A58 /* ViewController.swift in Sources */,
+				2BBEBCBA1DF3B3E100894A58 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2BBEBC7A1DF3887E00894A58 /* Main.storyboard */ = {
+		2BBEBCBD1DF3B3E100894A58 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2BBEBC7B1DF3887E00894A58 /* Base */,
+				2BBEBCBE1DF3B3E100894A58 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		2BBEBC7F1DF3887E00894A58 /* LaunchScreen.storyboard */ = {
+		2BBEBCC21DF3B3E100894A58 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2BBEBC801DF3887E00894A58 /* Base */,
+				2BBEBCC31DF3B3E100894A58 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -189,7 +164,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2BBEBC831DF3887E00894A58 /* Debug */ = {
+		2BBEBCC61DF3B3E100894A58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -238,7 +213,7 @@
 			};
 			name = Debug;
 		};
-		2BBEBC841DF3887E00894A58 /* Release */ = {
+		2BBEBCC71DF3B3E100894A58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,7 +255,7 @@
 			};
 			name = Release;
 		};
-		2BBEBC861DF3887E00894A58 /* Debug */ = {
+		2BBEBCC91DF3B3E100894A58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -290,11 +265,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebrown.Bike-Travel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		2BBEBC871DF3887E00894A58 /* Release */ = {
+		2BBEBCCA1DF3B3E100894A58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -304,32 +278,30 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebrown.Bike-Travel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2BBEBC6E1DF3887E00894A58 /* Build configuration list for PBXProject "Bike Travel" */ = {
+		2BBEBCB11DF3B3E100894A58 /* Build configuration list for PBXProject "Bike Travel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2BBEBC831DF3887E00894A58 /* Debug */,
-				2BBEBC841DF3887E00894A58 /* Release */,
+				2BBEBCC61DF3B3E100894A58 /* Debug */,
+				2BBEBCC71DF3B3E100894A58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2BBEBC851DF3887E00894A58 /* Build configuration list for PBXNativeTarget "Bike Travel" */ = {
+		2BBEBCC81DF3B3E100894A58 /* Build configuration list for PBXNativeTarget "Bike Travel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2BBEBC861DF3887E00894A58 /* Debug */,
-				2BBEBC871DF3887E00894A58 /* Release */,
+				2BBEBCC91DF3B3E100894A58 /* Debug */,
+				2BBEBCCA1DF3B3E100894A58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 2BBEBC6B1DF3887E00894A58 /* Project object */;
+	rootObject = 2BBEBCAE1DF3B3E100894A58 /* Project object */;
 }
