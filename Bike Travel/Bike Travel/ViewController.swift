@@ -12,11 +12,11 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
-    @IBOutlet weak var searchBar: UITextField!
-    @IBOutlet weak var createPath: UIToolbar!
-    @IBOutlet weak var clearPath: UIToolbar!
+   
     @IBOutlet weak var map: MKMapView!
     
+    @IBOutlet weak var searchBar: UITextField!
+    @IBOutlet weak var calculateRoute: UIToolbar!
     let manager = CLLocationManager()
     
     //Current Location Method
