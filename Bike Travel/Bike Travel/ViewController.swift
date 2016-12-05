@@ -8,31 +8,39 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
     
-    
+    @IBOutlet weak var searchBar: UITextField!
+    @IBOutlet weak var createPath: UIToolbar!
+    @IBOutlet weak var clearPath: UIToolbar!
     @IBOutlet weak var map: MKMapView!
     
-    //let manager
+    let manager = CLLocationManager()
+    
+    //Current Location Method
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let location = locations[0]
+        
+        let span : MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let myLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let region = MKCoordinateRegionMake(myLocation, span)
+        map.setRegion(region, animated: true)
+                
+        self.map.showsUserLocation = true
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Center Location = Full View Of Purdue University
-        let centerLocation = CLLocationCoordinate2DMake(40.424,-86.9200)
-        
-        let mapSpan = MKCoordinateSpanMake(0.03, 0.03)
-        
-        let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
-        
-        self.map.setRegion(mapRegion, animated: true)
-        
-        //var annotation = MKPointAnnotation()
-        
-        //Todo Fix to make a annotation
-        //annotation.coordinate(centerLocation)
-        
+        //Adding Current Location Functionality
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
         
     }
     
