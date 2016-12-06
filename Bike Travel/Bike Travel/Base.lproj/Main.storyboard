@@ -57,9 +57,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="calculateRoute" destination="AaX-R0-yT3" id="gn4-OB-CWQ"/>
-                        <outlet property="map" destination="hP8-ft-ojh" id="dZv-hD-Q8I"/>
-                        <outlet property="searchBar" destination="C4b-ks-Q0w" id="0Ho-Lg-DfP"/>
+                        <outlet property="myMap" destination="hP8-ft-ojh" id="knD-sQ-9Eq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
