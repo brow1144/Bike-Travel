@@ -1,25 +1,53 @@
 import UIKit
 import MapKit
+import CoreLocation
 import UserNotifications
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var myMap: MKMapView!
+    
     var myRoute : MKRoute!
     
-   
+    let manager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //User Location
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+        
         
         //Notifications 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
     
     }
     
+    @IBAction func myLocation(_ sender: UIBarButtonItem) {
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let location = locations[0]
+        let span : MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let myLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let region : MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        myMap.setRegion(region, animated: true)
+        self.myMap.showsUserLocation = true
+        
+        manager.stopUpdatingLocation()
+
+    
+    }
+
+    
     @IBAction func calculateRoute(_ sender: Any) {
+
         //Set up Route
         let point1 = MKPointAnnotation()
         let point2 = MKPointAnnotation()
@@ -80,6 +108,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         myLineRenderer.lineWidth = 3
         return myLineRenderer
     }
+ 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

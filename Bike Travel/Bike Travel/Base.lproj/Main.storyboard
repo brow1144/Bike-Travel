@@ -34,6 +34,16 @@
                                             <action selector="calculateRoute:" destination="BYZ-38-t0r" id="QKu-07-UGg"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" id="VeY-Fc-rUH">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rM6-mR-ohR">
+                                            <rect key="frame" x="147" y="7" width="118" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="My Location"/>
+                                        </button>
+                                        <connections>
+                                            <action selector="myLocation:" destination="BYZ-38-t0r" id="xW3-Rr-sql"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Desired Location" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Bdw-K7-u2v">
