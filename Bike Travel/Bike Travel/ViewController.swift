@@ -66,7 +66,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         content.body = "Switch over to Bike Travel to get the most accurate bike travel time and current speed while on the bike ride!"
         content.badge = 1
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: false)
         
         let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
         
@@ -88,6 +88,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     //Close Keyboard when return hit
     @IBAction func textFieldShouldReturn(_ sender: UITextField) {
         self.view.endEditing(true)
+
     }
 }
 

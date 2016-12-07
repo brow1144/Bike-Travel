@@ -25,15 +25,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hP8-ft-ojh">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </mapView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Desired Destination" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="C4b-ks-Q0w">
-                                <rect key="frame" x="16" y="28" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                <connections>
-                                    <action selector="textFieldShouldReturn:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="hFE-cZ-PRZ"/>
-                                </connections>
-                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaX-R0-yT3">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
@@ -45,31 +36,38 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Desired Location" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Bdw-K7-u2v">
+                                <rect key="frame" x="51" y="38" width="274" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="textFieldShouldReturn:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="RbZ-E2-wKn"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="C4b-ks-Q0w" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="10u-ee-DcS"/>
+                            <constraint firstItem="Bdw-K7-u2v" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="35" id="6v4-5V-tEP"/>
                             <constraint firstItem="AaX-R0-yT3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EsS-Pb-uiA"/>
-                            <constraint firstItem="C4b-ks-Q0w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HJ0-Sw-wRx"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AaX-R0-yT3" secondAttribute="bottom" id="ID9-Pz-WSl"/>
-                            <constraint firstItem="C4b-ks-Q0w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KEa-Ge-wJ1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hP8-ft-ojh" secondAttribute="bottom" id="Ogt-mj-YJf"/>
                             <constraint firstAttribute="trailing" secondItem="AaX-R0-yT3" secondAttribute="trailing" id="aBe-tr-1hM"/>
                             <constraint firstItem="hP8-ft-ojh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="azd-d5-9TQ"/>
                             <constraint firstItem="hP8-ft-ojh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hoh-Cm-QQ3"/>
-                            <constraint firstItem="C4b-ks-Q0w" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="mJZ-Oh-GDh"/>
-                            <constraint firstItem="C4b-ks-Q0w" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="pDP-h2-GbL"/>
+                            <constraint firstItem="Bdw-K7-u2v" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="qHV-aT-Hkf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bdw-K7-u2v" secondAttribute="trailing" constant="34" id="rMR-W7-5Fz"/>
                             <constraint firstAttribute="trailing" secondItem="hP8-ft-ojh" secondAttribute="trailing" id="t57-lr-48b"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="myMap" destination="hP8-ft-ojh" id="knD-sQ-9Eq"/>
-                        <outlet property="searchBar" destination="C4b-ks-Q0w" id="din-eo-hqW"/>
+                        <outlet property="searchBar" destination="Bdw-K7-u2v" id="bit-WD-ARZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127.53623188405798" y="131.25"/>
+            <point key="canvasLocation" x="127.2" y="130.88455772113943"/>
         </scene>
     </scenes>
 </document>
