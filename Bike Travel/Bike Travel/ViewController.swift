@@ -1,81 +1,37 @@
-//
-//  ViewController.swift
-//  Bike Travel
-//
-//  Created by Kyle Brown on 12/3/16.
-//  Copyright © 2016 Kyle Brown. All rights reserved.
-//
-
-
-/*
 import UIKit
 import MapKit
-import CoreLocation
-
-class ViewController: UIViewController, CLLocationManagerDelegate {
-    
- 
-    @IBOutlet weak var map: MKMapView!
-    
-    @IBOutlet weak var searchBar: UITextField!
-    @IBOutlet weak var calculateRoute: UIToolbar!
-    let manager = CLLocationManager()
-    
-    //Current Location Method
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let location = locations[0]
-        
-        let span : MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let myLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        let region = MKCoordinateRegionMake(myLocation, span)
-        map.setRegion(region, animated: true)
-                
-        self.map.showsUserLocation = true
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //Adding Current Location Functionality
-        manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
- 
-}
- */
-import UIKit
-import MapKit
+import UserNotifications
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    @IBOutlet weak var myMap: MKMapView!
     
+    @IBOutlet weak var searchBar: UITextField!
+    @IBOutlet weak var myMap: MKMapView!
     var myRoute : MKRoute!
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Notifications 
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
+    
+    }
+    
+    @IBAction func calculateRoute(_ sender: Any) {
+        //Set up Route
         let point1 = MKPointAnnotation()
         let point2 = MKPointAnnotation()
         
         point1.coordinate = CLLocationCoordinate2DMake(40.4267, -86.9267)
-        point1.title = "Elliot Hall of Music"
-        //point1.subtitle = "Taiwan"
+        point1.title = "Hillendbrand Residence Hall"
+        point1.subtitle = "Residence"
         myMap.addAnnotation(point1)
         
         point2.coordinate = CLLocationCoordinate2DMake(40.4277, -86.9170)
         point2.title = "Lawson Computer Science"
-        //point2.subtitle = "Taiwan"
+        point2.subtitle = "Education"
         myMap.addAnnotation(point2)
         myMap.centerCoordinate = point2.coordinate
         myMap.delegate = self
@@ -102,6 +58,19 @@ class ViewController: UIViewController, MKMapViewDelegate {
             }
             
         })
+        
+        //Notifications
+        let content = UNMutableNotificationContent()
+        content.title = "It's been a while!"
+        content.subtitle = "Wana go for a bike ride?"
+        content.body = "Switch over to Bike Travel to get the most accurate bike travel time and current speed while on the bike ride!"
+        content.badge = 1
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -116,5 +85,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    //Close Keyboard when return hit
+    @IBAction func textFieldShouldReturn(_ sender: UITextField) {
+        self.view.endEditing(true)
+    }
 }
 
