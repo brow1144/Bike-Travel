@@ -28,9 +28,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     }
     
-    @IBAction func myLocation(_ sender: UIBarButtonItem) {
-    }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations[0]
