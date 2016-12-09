@@ -113,8 +113,25 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     //Close Keyboard when return hit
     @IBAction func textFieldShouldReturn(_ sender: UITextField) {
+        
+    
+        //let location = "10566 N 200 W, Wheatfield, and 46392"
+        let location = (searchBar.text)!
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(location) { [weak self] placemarks, error in
+            if let placemark = placemarks?.first, let location = placemark.location {
+                let mark = MKPlacemark(placemark: placemark)
+                
+                if var region = self?.myMap.region {
+                    region.center = location.coordinate
+                    region.span.longitudeDelta /= 8.0
+                    region.span.latitudeDelta /= 8.0
+                    self?.myMap.setRegion(region, animated: true)
+                    self?.myMap.addAnnotation(mark)
+                }
+            }
+        }
         self.view.endEditing(true)
-
     }
 }
 
