@@ -6,12 +6,17 @@ import UserNotifications
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     
-    @IBOutlet weak var searchBar: UITextField!
+    @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var myMap: MKMapView!
     
     var myRoute : MKRoute!
     
     let manager = CLLocationManager()
+    
+    
+    
+    var matchingItems:[MKMapItem] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,12 +116,27 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.didReceiveMemoryWarning()
     }
     
+    //Show Search Results
+    @IBAction func showResults(_ sender: Any) {
+        let resultsController = UITableViewController(style: .plain)
+        let searchController = UISearchController(searchResultsController: resultsController)
+        self.present(searchController, animated: true, completion: nil)
+        
+        
+        
+        
+        
+    }
+    
+    
+    
     //Close Keyboard when return hit
+    /*
     @IBAction func textFieldShouldReturn(_ sender: UITextField) {
         
     
-        //let location = "10566 N 200 W, Wheatfield, and 46392"
-        let location = (searchBar.text)!
+        let location = "10566 N 200 W, Wheatfield, and 46392"
+        //let location = (searchBar.text)!
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(location) { [weak self] placemarks, error in
             if let placemark = placemarks?.first, let location = placemark.location {
@@ -133,5 +153,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         self.view.endEditing(true)
     }
+ */
 }
 
