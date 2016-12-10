@@ -5,18 +5,14 @@ import UserNotifications
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    
-    @IBOutlet weak var searchButton: UIBarButtonItem!
+    @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var myMap: MKMapView!
     
     var myRoute : MKRoute!
-    
     let manager = CLLocationManager()
-    
-    
-    
-    var matchingItems:[MKMapItem] = []
-    
+    var pointAnnotation : MKPointAnnotation!
+    var pinAnnotationView : MKPinAnnotationView!
+    var annotation:MKAnnotation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +39,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.myMap.showsUserLocation = true
         
         manager.stopUpdatingLocation()
-
-    
     }
 
-    
     @IBAction func calculateRoute(_ sender: Any) {
 
         //Set up Route
@@ -110,49 +103,37 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         myLineRenderer.lineWidth = 3
         return myLineRenderer
     }
- 
+    
+    @IBAction func textFieldShouldReturn(_ sender: UITextField) {
+        if (pointAnnotation != nil) {
+            myMap.removeAnnotation(pointAnnotation)
+        }
+        
+        let localSearchRequest = MKLocalSearchRequest()
+        localSearchRequest.naturalLanguageQuery = searchBar.text
+        let localSearch = MKLocalSearch(request: localSearchRequest)
+        localSearch.start { (localSearchResponse, error) -> Void in
+            
+            if localSearchResponse == nil{
+                let alertController = UIAlertController(title: nil, message: "Place Not Found", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
+            self.pointAnnotation = MKPointAnnotation()
+            self.pointAnnotation.title = self.searchBar.text
+            self.pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:     localSearchResponse!.boundingRegion.center.longitude)
+            
+            
+            self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
+            self.myMap.centerCoordinate = self.pointAnnotation.coordinate
+            self.myMap.addAnnotation(self.pinAnnotationView.annotation!)
+        }
+        self.view.endEditing(true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    //Show Search Results
-    @IBAction func showResults(_ sender: Any) {
-        let resultsController = UITableViewController(style: .plain)
-        let searchController = UISearchController(searchResultsController: resultsController)
-        self.present(searchController, animated: true, completion: nil)
-        
-        
-        
-        
-        
-    }
-    
-    
-    
-    //Close Keyboard when return hit
-    /*
-    @IBAction func textFieldShouldReturn(_ sender: UITextField) {
-        
-    
-        let location = "10566 N 200 W, Wheatfield, and 46392"
-        //let location = (searchBar.text)!
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(location) { [weak self] placemarks, error in
-            if let placemark = placemarks?.first, let location = placemark.location {
-                let mark = MKPlacemark(placemark: placemark)
-                
-                if var region = self?.myMap.region {
-                    region.center = location.coordinate
-                    region.span.longitudeDelta /= 8.0
-                    region.span.latitudeDelta /= 8.0
-                    self?.myMap.setRegion(region, animated: true)
-                    self?.myMap.addAnnotation(mark)
-                }
-            }
-        }
-        self.view.endEditing(true)
-    }
- */
 }
 
