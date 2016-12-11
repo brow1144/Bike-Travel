@@ -7,6 +7,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var myMap: MKMapView!
+    @IBOutlet weak var timeLabel: UILabel!
     
     var myRoute : MKRoute!
     let manager = CLLocationManager()
@@ -15,6 +16,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     var pointAnnotation : MKPointAnnotation!
     var myLocation : CLLocationCoordinate2D!
+    
+    var directions : MKDirections!
+    var myLineRenderer : MKPolylineRenderer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +64,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             myMap.removeAnnotation(pointAnnotation)
         }
         
+        let overlays = myMap.overlays
+        myMap.removeOverlays(overlays)
+        
         let localSearchRequest = MKLocalSearchRequest()
         localSearchRequest.naturalLanguageQuery = searchBar.text
         let localSearch = MKLocalSearch(request: localSearchRequest)
@@ -89,26 +96,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     @IBAction func calculateRoute(_ sender: Any) {
         
-        //Set up Route
-        //let point1 = MKPointAnnotation()
-        //let point2 = MKPointAnnotation()
-        
-        /*
-        point1.coordinate = CLLocationCoordinate2DMake(40.4267, -86.9267)
-        point1.title = "Hillendbrand Residence Hall"
-        point1.subtitle = "Residence"
-        myMap.addAnnotation(point1)
-        
-        point2.coordinate = CLLocationCoordinate2DMake(40.4277, -86.9170)
-        point2.title = "Lawson Computer Science"
-        point2.subtitle = "Education"
-        myMap.addAnnotation(point2)
-        myMap.centerCoordinate = point2.coordinate
-        myMap.delegate = self
- */
-        //myLocation is a CLLocationCoordinate2DMake
-        
-        //Span of the map
         myMap.setRegion(MKCoordinateRegionMake(myLocation, MKCoordinateSpanMake(0.03,0.03)), animated: true)
         
         let directionsRequest = MKDirectionsRequest()
@@ -121,19 +108,20 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         directionsRequest.transportType = MKDirectionsTransportType.walking
         let directions = MKDirections(request: directionsRequest)
         
-        directions.calculate(completionHandler: {
-            response, error in
-            
+        directions.calculate { response, error in
+            if let route = response?.routes.first {
+                let distance = route.distance/257.49
+                let y = Double(round(100*distance)/100)
+                self.timeLabel.text = ("ETA: " + "\(y)" + " mins")
+            } else {
+                print("Error!")
+            }
             if error == nil {
                 self.myRoute = response!.routes[0] as MKRoute
                 self.myMap.add(self.myRoute.polyline)
             }
-            
-        })
-        
-        
-        
-        
+        }
+    
         //Notifications
         let content = UNMutableNotificationContent()
         content.title = "It's been a while!"
@@ -147,5 +135,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
+    
 }
 

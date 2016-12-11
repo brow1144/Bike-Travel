@@ -57,9 +57,27 @@
                                     <action selector="textFieldShouldReturn:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="DAW-Es-O1P"/>
                                 </connections>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ace" translatesAutoresizingMaskIntoConstraints="NO" id="447-b1-x1g">
+                                <rect key="frame" x="196" y="557" width="163" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="163" id="8MD-Gu-Zct"/>
+                                    <constraint firstAttribute="height" constant="57" id="qUq-SO-nye"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voj-Wq-BoY">
+                                <rect key="frame" x="208" y="575" width="134" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="134" id="YmJ-Jh-DvS"/>
+                                    <constraint firstAttribute="height" constant="21" id="zsY-x7-T5Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="AaX-R0-yT3" firstAttribute="top" secondItem="447-b1-x1g" secondAttribute="bottom" constant="9" id="8hR-kY-WYk"/>
                             <constraint firstItem="AaX-R0-yT3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EsS-Pb-uiA"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AaX-R0-yT3" secondAttribute="bottom" id="ID9-Pz-WSl"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hP8-ft-ojh" secondAttribute="bottom" id="Ogt-mj-YJf"/>
@@ -67,8 +85,11 @@
                             <constraint firstAttribute="trailing" secondItem="kEk-zK-ce9" secondAttribute="trailing" id="Tqe-oX-zMS"/>
                             <constraint firstAttribute="trailing" secondItem="AaX-R0-yT3" secondAttribute="trailing" id="aBe-tr-1hM"/>
                             <constraint firstItem="hP8-ft-ojh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="azd-d5-9TQ"/>
+                            <constraint firstItem="AaX-R0-yT3" firstAttribute="top" secondItem="voj-Wq-BoY" secondAttribute="bottom" constant="27" id="ecb-Lx-k9h"/>
                             <constraint firstItem="hP8-ft-ojh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hoh-Cm-QQ3"/>
+                            <constraint firstItem="447-b1-x1g" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="j9m-MG-hME"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Y86-2o-xB6" secondAttribute="trailing" constant="29" id="mCt-jV-gCh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="voj-Wq-BoY" secondAttribute="trailing" constant="17" id="o1P-vO-uVv"/>
                             <constraint firstItem="kEk-zK-ce9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="q3M-wF-fuf"/>
                             <constraint firstAttribute="trailing" secondItem="hP8-ft-ojh" secondAttribute="trailing" id="t57-lr-48b"/>
                             <constraint firstItem="Y86-2o-xB6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="29" id="xo0-pP-Cg1"/>
@@ -78,6 +99,7 @@
                     <connections>
                         <outlet property="myMap" destination="hP8-ft-ojh" id="knD-sQ-9Eq"/>
                         <outlet property="searchBar" destination="Y86-2o-xB6" id="68f-qI-zF5"/>
+                        <outlet property="timeLabel" destination="voj-Wq-BoY" id="Oma-87-IYg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -85,4 +107,7 @@
             <point key="canvasLocation" x="127.2" y="130.88455772113943"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ace" width="282" height="271"/>
+    </resources>
 </document>
