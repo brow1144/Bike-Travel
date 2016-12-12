@@ -5,6 +5,7 @@ import UserNotifications
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    //UI Variables
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var myMap: MKMapView!
     @IBOutlet weak var timeLabel: UILabel!
@@ -14,38 +15,43 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var timeBox: UIImageView!
     @IBOutlet weak var distanceBox: UIImageView!
     
-    var myRoute : MKRoute!
+    //User Location Variable
     let manager = CLLocationManager()
+
+    //Map Annotations and Routes
+    var myRoute : MKRoute!
     var pinAnnotationView : MKPinAnnotationView!
     var annotation:MKAnnotation!
-    
     var pointAnnotation : MKPointAnnotation!
     var myLocation : CLLocationCoordinate2D!
-    
     var directions : MKDirections!
     var myLineRenderer : MKPolylineRenderer!
     
+    //View Loads
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myMap.delegate = self
         
+        //Make Time and Distance Box Invisible When Launched
         self.timeBox.image = nil
         self.distanceBox.image = nil
         
-        //User Location
+        //User Location Set - Up
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
         
         
-        //Notifications 
+        //User Notifications Set - Up
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
     
     }
     
+    //User Location Method
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        //Finds User Location and Show
         let location = locations[0]
         let span : MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         myLocation = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
@@ -53,12 +59,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         myMap.setRegion(region, animated: true)
         self.myMap.showsUserLocation = true
         
-        
+        //Allow User To Move off User Location
         manager.stopUpdatingLocation()
     }
     
+    //Map View Method
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
+        //Draws and Changes Route Characteristics
         let myLineRenderer = MKPolylineRenderer(polyline: myRoute.polyline)
         myLineRenderer.strokeColor = UIColor.green
         myLineRenderer.lineWidth = 3
@@ -66,12 +74,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
     }
     
-    
+    //User Hits Route After Typing
     @IBAction func textFieldShouldReturn(_ sender: UITextField) {
+        
+        //Remove All Previous Map Annotations
         if (pointAnnotation != nil) {
             myMap.removeAnnotation(pointAnnotation)
         }
         
+        //Remove All Time and Distance Information
         self.timeBox.image = nil
         self.distanceBox.image = nil
         self.timeLabel.text = nil
@@ -79,25 +90,27 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.timeSubLabel.text = nil
         self.distanceSubLevel.text = nil
         
+        //Remove Map Overlays
         let overlays = myMap.overlays
         myMap.removeOverlays(overlays)
         
+        //Find Location Entered By User
         let localSearchRequest = MKLocalSearchRequest()
         localSearchRequest.naturalLanguageQuery = searchBar.text
         let localSearch = MKLocalSearch(request: localSearchRequest)
         localSearch.start { (localSearchResponse, error) -> Void in
             
+            //Place Not Found Dialog Box
             if localSearchResponse == nil{
                 let alertController = UIAlertController(title: nil, message: "Place Not Found", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
                 return
             }
+            //Annotate Map at User Inputed Location
             self.pointAnnotation = MKPointAnnotation()
             self.pointAnnotation.title = self.searchBar.text
             self.pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:     localSearchResponse!.boundingRegion.center.longitude)
-            
-            
             self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
             self.myMap.centerCoordinate = self.pointAnnotation.coordinate
             self.myMap.addAnnotation(self.pinAnnotationView.annotation!)
@@ -105,44 +118,51 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.view.endEditing(true)
     }
     
+    //Recieve Memory Warning Method
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    //User Pressed Calculate Route Button
     @IBAction func calculateRoute(_ sender: Any) {
         
+        //Set Map Region to User Location
         myMap.setRegion(MKCoordinateRegionMake(myLocation, MKCoordinateSpanMake(0.03,0.03)), animated: true)
         
+        //Call Directions from User Location to Uesr Inputed Location
         let directionsRequest = MKDirectionsRequest()
         let myLocationPlaceMark = MKPlacemark(coordinate: CLLocationCoordinate2DMake(myLocation.latitude, myLocation.longitude), addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: CLLocationCoordinate2DMake(pointAnnotation.coordinate.latitude, pointAnnotation.coordinate.longitude), addressDictionary: nil)
-        
         directionsRequest.source = MKMapItem(placemark: myLocationPlaceMark)
         directionsRequest.destination = MKMapItem(placemark: destinationPlacemark)
-        
         directionsRequest.transportType = MKDirectionsTransportType.walking
         let directions = MKDirections(request: directionsRequest)
         
+        //Caluculate Information About Directions
         directions.calculate { response, error in
             if let route = response?.routes.first {
                 
+                //Calculates Distance in Miles to Two Decimals
                 let distance = route.distance
                 let meterToMilesConvertion = 1609.344
                 let distanceMiles = distance / meterToMilesConvertion
                 let distanceMilesTwoDec = Double(round(100 * distanceMiles) / 100)
 
+                //Calculates Time in Minutes with Two Decimals
+                let time = route.distance / 257.49
+                let timeRoundedTwoDecimals = Double(round(100 * time) / 100)
+                let timeString = (String)(timeRoundedTwoDecimals)
                 
-                let distance1 = route.distance / 257.49
-                let distanceRounded2 = Double(round(100 * distance1) / 100)
-                let subString = (String)(distanceRounded2)
+                //Calculates Time in Minutes and Seconds
                 let period: Character = "."
-                let index = subString.characters.index(of: period)
-                let remainder = subString.substring(from: index!)
+                let index = timeString.characters.index(of: period)
+                let remainder = timeString.substring(from: index!)
                 let myDouble = Double(remainder)
                 let seconds = myDouble! * 60
                 let secondsInt:Int = Int(seconds)
-                let minutesInt:Int = Int(distanceRounded2)
+                let minutesInt:Int = Int(timeRoundedTwoDecimals)
                 
+                //Shows Time and Distance Information
                 self.timeLabel.text = ("\(minutesInt)" + ":" + "\(secondsInt)" + " Minutes")
                 self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
                 self.timeSubLabel.text = "Time"
@@ -158,17 +178,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
         }
     
-        //Notifications
+        //User Notifications
         let content = UNMutableNotificationContent()
         content.title = "It's been a while!"
         content.subtitle = "Wana go for a bike ride?"
         content.body = "Switch over to Bike Travel to get the most accurate bike travel time and current speed while on the bike ride!"
         content.badge = 1
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: false)
-        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
         let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
-        
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
