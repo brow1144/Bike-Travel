@@ -110,9 +110,18 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         directions.calculate { response, error in
             if let route = response?.routes.first {
-                let distance = route.distance/257.49
-                let y = Double(round(100*distance)/100)
-                self.timeLabel.text = ("ETA: " + "\(y)" + " mins")
+                let distance = route.distance / 257.49
+                let distanceRounded2 = Double(round(100 * distance) / 100)
+                let subString = (String)(distanceRounded2)
+                let period: Character = "."
+                let index = subString.characters.index(of: period)
+                let remainder = subString.substring(from: index!)
+                let myDouble = Double(remainder)
+                let seconds = myDouble! * 60
+                let secondsInt:Int = Int(seconds)
+                let minutesInt:Int = Int(distanceRounded2)
+                
+                self.timeLabel.text = ("Time : " + "\(minutesInt)" + ":" + "\(secondsInt)")
             } else {
                 print("Error!")
             }
