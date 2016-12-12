@@ -45,6 +45,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         //User Notifications Set - Up
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
+        
+        //User Notifications
+        let content = UNMutableNotificationContent()
+        content.title = "It's been a while!"
+        content.subtitle = "Wana go for a bike ride?"
+        content.body = "Switch over to Bike Travel to get the most accurate bike travel time and current speed while on the bike ride!"
+        content.badge = 1
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
+        let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     
     }
     
@@ -177,17 +187,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 self.myMap.add(self.myRoute.polyline)
             }
         }
-    
-        //User Notifications
-        let content = UNMutableNotificationContent()
-        content.title = "It's been a while!"
-        content.subtitle = "Wana go for a bike ride?"
-        content.body = "Switch over to Bike Travel to get the most accurate bike travel time and current speed while on the bike ride!"
-        content.badge = 1
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
-        let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
-    
 }
 
