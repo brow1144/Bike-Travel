@@ -8,6 +8,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var myMap: MKMapView!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var timeSubLabel: UILabel!
+    @IBOutlet weak var distanceSubLevel: UILabel!
+    @IBOutlet weak var timeBox: UIImageView!
+    @IBOutlet weak var distanceBox: UIImageView!
     
     var myRoute : MKRoute!
     let manager = CLLocationManager()
@@ -23,6 +28,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myMap.delegate = self
+        
+        self.timeBox.image = nil
+        self.distanceBox.image = nil
         
         //User Location
         manager.delegate = self
@@ -63,6 +71,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if (pointAnnotation != nil) {
             myMap.removeAnnotation(pointAnnotation)
         }
+        
+        self.timeBox.image = nil
+        self.distanceBox.image = nil
+        self.timeLabel.text = nil
+        self.distanceLabel.text = nil
+        self.timeSubLabel.text = nil
+        self.distanceSubLevel.text = nil
         
         let overlays = myMap.overlays
         myMap.removeOverlays(overlays)
@@ -110,8 +125,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         directions.calculate { response, error in
             if let route = response?.routes.first {
-                let distance = route.distance / 257.49
-                let distanceRounded2 = Double(round(100 * distance) / 100)
+                
+                let distance = route.distance
+                let meterToMilesConvertion = 1609.344
+                let distanceMiles = distance / meterToMilesConvertion
+                let distanceMilesTwoDec = Double(round(100 * distanceMiles) / 100)
+
+                
+                let distance1 = route.distance / 257.49
+                let distanceRounded2 = Double(round(100 * distance1) / 100)
                 let subString = (String)(distanceRounded2)
                 let period: Character = "."
                 let index = subString.characters.index(of: period)
@@ -121,7 +143,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 let secondsInt:Int = Int(seconds)
                 let minutesInt:Int = Int(distanceRounded2)
                 
-                self.timeLabel.text = ("Time : " + "\(minutesInt)" + ":" + "\(secondsInt)")
+                self.timeLabel.text = ("\(minutesInt)" + ":" + "\(secondsInt)" + " Minutes")
+                self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
+                self.timeSubLabel.text = "Time"
+                self.distanceSubLevel.text = "Distance"
+                self.timeBox.image = UIImage( named : "ace" )
+                self.distanceBox.image = UIImage( named : "ace" )
             } else {
                 print("Error!")
             }
