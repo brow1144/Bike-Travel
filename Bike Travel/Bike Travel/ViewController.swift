@@ -135,7 +135,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     //User Pressed Calculate Route Button
     @IBAction func calculateRoute(_ sender: Any) {
-        
+
         //Set Map Region to User Location
         myMap.setRegion(MKCoordinateRegionMake(myLocation, MKCoordinateSpanMake(0.03,0.03)), animated: true)
         
@@ -163,22 +163,45 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 let timeRoundedTwoDecimals = Double(round(100 * time) / 100)
                 let timeString = (String)(timeRoundedTwoDecimals)
                 
+                //Calculating Time In Hours and Minutes
+                let timeInHours = timeRoundedTwoDecimals / 60
+                let timeInHoursInt:Int = Int(timeInHours)
+                
+                let period1: Character = "."
+                let index1 = timeString.characters.index(of: period1)
+                let remainder1 = timeString.substring(from: index1!)
+                let myDouble1 = Double(remainder1)
+                let minutes = myDouble1! * 60
+                let minutes1Int:Int = Int(minutes)
+                
                 //Calculates Time in Minutes and Seconds
-                let period: Character = "."
-                let index = timeString.characters.index(of: period)
-                let remainder = timeString.substring(from: index!)
-                let myDouble = Double(remainder)
-                let seconds = myDouble! * 60
+                let period2: Character = "."
+                let index2 = timeString.characters.index(of: period2)
+                let remainder2 = timeString.substring(from: index2!)
+                let myDouble2 = Double(remainder2)
+                let seconds = myDouble2! * 60
                 let secondsInt:Int = Int(seconds)
-                let minutesInt:Int = Int(timeRoundedTwoDecimals)
+                let minutes2Int:Int = Int(timeRoundedTwoDecimals)
                 
                 //Shows Time and Distance Information
-                self.timeLabel.text = ("\(minutesInt)" + ":" + "\(secondsInt)" + " Minutes")
-                self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
-                self.timeSubLabel.text = "Time"
-                self.distanceSubLevel.text = "Distance"
-                self.timeBox.image = UIImage( named : "ace" )
-                self.distanceBox.image = UIImage( named : "ace" )
+                    //If Time is Greater Than An Hour Set Up Time Different
+                if (timeRoundedTwoDecimals > 60 ) {
+                    self.timeLabel.text = ("\(timeInHoursInt)" + " Hour(s)")
+                    self.timeSubLabel.text = ("\(minutes1Int)" + " Minutes")
+                    self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
+                    self.distanceSubLevel.text = "Distance"
+                    self.timeBox.image = UIImage( named : "ace" )
+                    self.distanceBox.image = UIImage( named : "ace" )
+                }
+                //If Time is Less Than an Hour Set Up Time By Normal
+                else {
+                    self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + " Minutes")
+                    self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
+                    self.timeSubLabel.text = "Time"
+                    self.distanceSubLevel.text = "Distance"
+                    self.timeBox.image = UIImage( named : "ace" )
+                    self.distanceBox.image = UIImage( named : "ace" )
+                }
             } else {
                 print("Error!")
             }
