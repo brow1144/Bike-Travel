@@ -177,7 +177,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 let time = distanceMiles / Double(speedMilesPerMinute)
                 let timeRoundedTwoDecimals = Double(round(100 * time) / 100)
                 let timeString = (String)(timeRoundedTwoDecimals)
-                let timeString2 = (String)(timeRoundedTwoDecimals)
+                let timeString1 = (String)(timeRoundedTwoDecimals)
 
                 
                 //Calculating Time In Hours and Minutes
@@ -193,8 +193,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 
                 //Calculates Time in Minutes and Seconds
                 let period2: Character = "."
-                let index2 = timeString2.characters.index(of: period2)
-                let remainder2 = timeString.substring(from: index2!)
+                let index2 = timeString1.characters.index(of: period2)
+                let remainder2 = timeString1.substring(from: index2!)
                 let myDouble2 = Double(remainder2)
                 let seconds = myDouble2! * 60
                 let secondsInt:Int = Int(seconds)

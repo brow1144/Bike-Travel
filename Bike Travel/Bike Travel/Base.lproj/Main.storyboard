@@ -37,7 +37,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="I6Y-IC-iec"/>
                                     <barButtonItem title="9.8 mph" id="scZ-pv-jCO"/>
                                     <barButtonItem enabled="NO" style="plain" id="ABn-pJ-ebf">
-                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="40" id="ajM-1C-gD3">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="25" id="ajM-1C-gD3">
                                             <rect key="frame" x="242" y="7" width="119" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
