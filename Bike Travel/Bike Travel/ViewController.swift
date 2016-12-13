@@ -14,6 +14,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var distanceSubLevel: UILabel!
     @IBOutlet weak var timeBox: UIImageView!
     @IBOutlet weak var distanceBox: UIImageView!
+    @IBOutlet weak var speedLabel: UIBarButtonItem!
+    @IBOutlet weak var slider: UISlider!
     
     //User Location Variable
     let manager = CLLocationManager()
@@ -27,10 +29,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var directions : MKDirections!
     var myLineRenderer : MKPolylineRenderer!
     
+    //Slider Value (Default is 9.8mph)
+    var sliderValue : Float! = 9.8
+    
     //View Loads
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myMap.delegate = self
+        
+        slider.isEnabled = true
         
         //Make Time and Distance Box Invisible When Launched
         self.timeBox.image = nil
@@ -133,6 +140,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.didReceiveMemoryWarning()
     }
     
+    //Slider Moved Method
+    @IBAction func sliderMoved(_ sender: UISlider) {
+        self.sliderValue = sender.value
+        self.speedLabel.title = ("\(Int(sender.value))" + " mph")
+    }
+    
+    
     //User Pressed Calculate Route Button
     @IBAction func calculateRoute(_ sender: Any) {
 
@@ -159,7 +173,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 let distanceMilesTwoDec = Double(round(100 * distanceMiles) / 100)
 
                 //Calculates Time in Minutes with Two Decimals
-                let time = route.distance / 257.49
+                let speedMilesPerMinute = self.sliderValue / 60
+                let time = distanceMiles / Double(speedMilesPerMinute)
                 let timeRoundedTwoDecimals = Double(round(100 * time) / 100)
                 let timeString = (String)(timeRoundedTwoDecimals)
                 let timeString2 = (String)(timeRoundedTwoDecimals)
