@@ -32,6 +32,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     //Slider Value (Default is 9.8mph)
     var sliderValue : Float! = 9.8
     
+    //Recieve Memory Warning Method
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     //View Loads
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,21 +140,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.view.endEditing(true)
     }
     
-    //Recieve Memory Warning Method
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     //Slider Moved Method
     @IBAction func sliderMoved(_ sender: UISlider) {
         self.sliderValue = sender.value
         self.speedLabel.title = ("\(Int(sender.value))" + " mph")
     }
     
-    
     //User Pressed Calculate Route Button
     @IBAction func calculateRoute(_ sender: Any) {
-
+    
         //Set Map Region to User Location
         myMap.setRegion(MKCoordinateRegionMake(myLocation, MKCoordinateSpanMake(0.03,0.03)), animated: true)
         
