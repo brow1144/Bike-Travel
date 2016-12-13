@@ -30,7 +30,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var myLineRenderer : MKPolylineRenderer!
     
     //Slider Value (Default is 9.8mph)
-    var sliderValue : Float! = 9.8
+    var sliderValue : Double = 9.8
     
     //Recieve Memory Warning Method
     override func didReceiveMemoryWarning() {
@@ -142,7 +142,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     //Slider Moved Method
     @IBAction func sliderMoved(_ sender: UISlider) {
-        self.sliderValue = sender.value
+        self.sliderValue = Double(sender.value)
         self.speedLabel.title = ("\(Int(sender.value))" + " mph")
     }
     
@@ -180,38 +180,43 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
                 
                 //Calculating Time In Hours and Minutes
-                let timeInHours = timeRoundedTwoDecimals / 60
-                let timeInHoursInt:Int = Int(timeInHours)
+                if (timeRoundedTwoDecimals > 60) {
+                    let timeInHours = timeRoundedTwoDecimals / 60
+                    let timeInHoursInt:Int = Int(timeInHours)
                 
-                let period1: Character = "."
-                let index1 = timeString.characters.index(of: period1)
-                let remainder1 = timeString.substring(from: index1!)
-                let myDouble1 = Double(remainder1)
-                let minutes = myDouble1! * 60
-                let minutes1Int:Int = Int(minutes)
-                
-                //Calculates Time in Minutes and Seconds
-                let period2: Character = "."
-                let index2 = timeString1.characters.index(of: period2)
-                let remainder2 = timeString1.substring(from: index2!)
-                let myDouble2 = Double(remainder2)
-                let seconds = myDouble2! * 60
-                let secondsInt:Int = Int(seconds)
-                let minutes2Int:Int = Int(timeRoundedTwoDecimals)
-                
-                //Shows Time and Distance Information
-                    //If Time is Greater Than An Hour Set Up Time Different
-                if (timeRoundedTwoDecimals > 60 ) {
+                    let period1: Character = "."
+                    let index1 = timeString.characters.index(of: period1)
+                    let remainder1 = timeString.substring(from: index1!)
+                    let myDouble1 = Double(remainder1)
+                    let minutes = myDouble1! * 60
+                    let minutes1Int:Int = Int(minutes)
+                    
                     self.timeLabel.text = ("\(timeInHoursInt)" + " Hour(s)")
                     self.timeSubLabel.text = ("\(minutes1Int)" + " Minutes")
                     self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
                     self.distanceSubLevel.text = "Distance"
                     self.timeBox.image = UIImage( named : "ace" )
                     self.distanceBox.image = UIImage( named : "ace" )
-                }
-                //If Time is Less Than an Hour Set Up Time By Normal
-                else {
-                    self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + " Minutes")
+                } else {
+                //Calculates Time in Minutes and Seconds
+                    let period2: Character = "."
+                    let index2 = timeString1.characters.index(of: period2)
+                    let remainder2 = timeString1.substring(from: index2!)
+                    let myDouble2 = Double(remainder2)
+                    let seconds = myDouble2! * 60
+                    let secondsInt:Int = Int(seconds)
+                    let minutes2Int:Int = Int(timeRoundedTwoDecimals)
+
+                    //Takes Care of Random Rounding Problem
+                    if ( (secondsInt == 1) || (secondsInt == 2) || (secondsInt == 3) || (secondsInt == 4) || (secondsInt == 5) || (secondsInt == 6) ) {
+                        self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + "0 Minutes")
+                    } else if ( (secondsInt == 7) || (secondsInt == 8) || (secondsInt == 9)) {
+                        self.timeLabel.text = ("\(minutes2Int)" + ":" + "00 Minutes")
+
+                    } else {
+                        self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + " Minutes")
+                    }
+                    
                     self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
                     self.timeSubLabel.text = "Time"
                     self.distanceSubLevel.text = "Distance"
