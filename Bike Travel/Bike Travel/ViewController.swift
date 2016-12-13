@@ -42,7 +42,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         self.myMap.delegate = self
         
-        slider.isEnabled = true
+        //Sets Slider To Be Able To Slide
+        self.slider.isEnabled = true
         
         //Make Time and Distance Box Invisible When Launched
         self.timeBox.image = nil
