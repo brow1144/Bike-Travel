@@ -1,3 +1,11 @@
+//
+//  ViewController.siwft
+//  Bike Travel
+//
+//  Created by Kyle Brown on 12/3/16.
+//  Copyright © 2016 Kyle Brown. All rights reserved.
+//
+
 import UIKit
 import MapKit
 import CoreLocation
@@ -37,7 +45,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.didReceiveMemoryWarning()
     }
     
-    //View Loads
+    /**
+     
+    Opening App Tasks
+     
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myMap.delegate = self
@@ -71,7 +83,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     }
     
-    //User Location Method
+    /**
+     Finding User Location
+     
+     - Parameter manager:   CLLocationManager that Finds Users.
+     - Parameter locations: Array of Locaitons used to find lat / long / etc.
+     
+    */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         //Finds User Location and Show
@@ -86,7 +104,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         manager.stopUpdatingLocation()
     }
     
-    //Map View Method
+    /**
+     Draws on Map View
+     
+     - Parameter mapView:   MKMapView to be Added to.
+     - Parameter overlay:   Overlays to be added to the Map.
+     
+     - Returns: MKOverlayRenderer 
+     
+     */
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         //Draws and Changes Route Characteristics
@@ -97,7 +123,23 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
     }
     
-    //User Hits Route After Typing
+    /**
+     Action for when the Slider is Moved
+     
+     - Parameter sender:   Access to the UISlider
+     
+     */
+    @IBAction func sliderMoved(_ sender: UISlider) {
+        self.sliderValue = Double(sender.value)
+        self.speedLabel.title = ("\(Int(sender.value))" + " mph")
+    }
+    
+    /**
+     Called When user is Finished Typing and hits Route
+     
+     - Parameter sender:   Access to the UITextField
+     
+     */
     @IBAction func textFieldShouldReturn(_ sender: UITextField) {
         
         //Remove All Previous Map Annotations
@@ -141,13 +183,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.view.endEditing(true)
     }
     
-    //Slider Moved Method
-    @IBAction func sliderMoved(_ sender: UISlider) {
-        self.sliderValue = Double(sender.value)
-        self.speedLabel.title = ("\(Int(sender.value))" + " mph")
-    }
-    
-    //User Pressed Calculate Route Button
+    /**
+     Action for when the Calculate Route Button is Pushed
+     
+     - Parameter sender:   Access to the UIButton "Calculate Route"
+
+     */
     @IBAction func calculateRoute(_ sender: Any) {
     
         //Set Map Region to User Location
