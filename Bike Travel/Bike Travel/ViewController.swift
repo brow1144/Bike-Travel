@@ -59,28 +59,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myMap.delegate = self
-        
-        
-        
-        //-------------------------
-        
-        
-        
-        
-        getWeather(city: "Tampa")
-        self.windLabel.text = "Chloe"
-        
-       // let x = self.speed
-        //print("STUFF: " + "\(x)")
  
-        
-        
-        
-        //-------------------------
-
-        
-        
-        
+        //Call To Get Weather
+        getWeather(city: "Tampa")
         
         //Sets Slider To Be Able To Slide
         self.slider.isEnabled = true
@@ -131,6 +112,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //Allow User To Move off User Location
         manager.stopUpdatingLocation()
         
+        //Sets Wind Label in Bottom Right
         self.windLabel.text = String(describing: self.speed!)
     }
     
@@ -164,15 +146,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.speedLabel.title = ("\(Int(sender.value))" + " mph")
     }
     
-    /*
-     ADD DOCUMENTATION
+    /**
+     Method To Retireve Weather Data From Open Weather API
+     
+     - Parameter String:    String of City Name
+     
     */
-
-
-    
     func getWeather(city: String) {
         
-        // This is a pretty simple networking task, so the shared session will do.
+        // Simple Network Task
         let session = URLSession.shared
         
         let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?APPID=\(openWeatherMapAPIKey)&q=\(city)")!
@@ -181,33 +163,45 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let dataTask = session.dataTask(with: weatherRequestURL as URL) {
             (data: Data?, response: URLResponse?, error: Error?) in
             if let error = error {
-                // Case 1: Error
-                // We got some kind of error while trying to get data from the server.
+                // Error While Trying to get Data For Weather
                 print("Error:\n\(error)")
             }
             else {
-                // Case 2: Success
-                // We got a response from the server!
+                // Response Worked!
                 do {
-                    // Try to convert that data into a Swift dictionary
+                    // Convert that data into a Swift dictionary
                     let weather = try JSONSerialization.jsonObject(
                         with: data!,
                         options: .mutableContainers) as! [String: AnyObject]
                     
-                    // If we made it to this point, we've successfully converted the
-                    // JSON-formatted weather data into a Swift dictionary.
-                    // Let's print its contents to the debug console.
+                    // Print Contents Console.
                     
+                    print("Date and time: \(weather["dt"]!)")
+                    print("City: \(weather["name"]!)")
+                    
+                    print("Longitude: \(weather["coord"]!["lon"]!!)")
+                    print("Latitude: \(weather["coord"]!["lat"]!!)")
+                    
+                    print("Temperature: \(weather["main"]!["temp"]!!)")
+                    print("Humidity: \(weather["main"]!["humidity"]!!)")
+                    print("Pressure: \(weather["main"]!["pressure"]!!)")
+                    
+                    print("Cloud cover: \(weather["clouds"]!["all"]!!)")
+                    
+                    print("Country: \(weather["sys"]!["country"]!!)")
+                    print("Sunrise: \(weather["sys"]!["sunrise"]!!)")
+                    print("Sunset: \(weather["sys"]!["sunset"]!!)")
+
                     print("Wind direction: \(weather["wind"]!["deg"]!!) degrees")
                     print("Wind speed: \(weather["wind"]!["speed"]!!)")
                 
-                    //self.speed = "Wind speed: \(weather["wind"]!["speed"]!!)"
+                    //Set speed
                     let x = weather["wind"]!["speed"]!
                     self.speed = String(describing: x!)
                     
                 }
                 catch let jsonError as NSError {
-                    // An error occurred while trying to convert the data into a Swift dictionary.
+                    // Error occurred while trying to convert the data into a Swift dictionary.
                     
                     
                     print("JSON error description: \(jsonError.description)")
@@ -215,9 +209,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
         }
         
-        // The data task is set up...launch it!
+        // Resume
         dataTask.resume()
-        
     }
  
     /**
