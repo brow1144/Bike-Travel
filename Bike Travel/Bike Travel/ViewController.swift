@@ -46,10 +46,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     let openWeatherMapBaseURL = "http://api.openweathermap.org/data/2.5/weather"
     let openWeatherMapAPIKey = "2a0e4c51a24010f830e178e810f59517"
     var speed : String!
-    
-    var lat : Double!
-    var long : Double!
-    
     var weatherRequestURL : NSURL!
     
     //Recieve Memory Warning Method
@@ -93,7 +89,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
-        
     }
     
     /**
@@ -112,12 +107,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let region : MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         myMap.setRegion(region, animated: true)
         self.myMap.showsUserLocation = true
-        
-        self.lat = location.coordinate.latitude
-        self.long = location.coordinate.longitude
-        
+   
+        //Create URL
         weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&appid=\(openWeatherMapAPIKey)")!
-
         
         //Allow User To Move off User Location
         manager.stopUpdatingLocation()
@@ -167,11 +159,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         // Simple Network Task
         let session = URLSession.shared
-        
-        //let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?APPID=\(openWeatherMapAPIKey)&q=\(city)")!
-        //let x = 35
-        //let y = 139
-         //let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?lat=\(lat)&lon=\(long)&appid=\(openWeatherMapAPIKey)")!
         
         // The data task retrieves the data.
         let dataTask = session.dataTask(with: weatherRequestURL as URL) {
