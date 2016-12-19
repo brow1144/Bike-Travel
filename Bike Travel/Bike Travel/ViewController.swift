@@ -205,10 +205,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     //Change Label To Speed in MPH
                     self.windLabel.text = String(describing: self.speed!) + " mph"
                     self.loadingLabel.text = ""
-
                     
-                }
-                catch let jsonError as NSError {
+                    if (Double(self.speed)! < 8.0) {
+                        self.windLabel.textColor = UIColor.green
+                    } else if (Double(self.speed)! < 18.0) {
+                        self.windLabel.textColor = UIColor.yellow
+                    } else if (Double(self.speed)! > 20.0) {
+                        self.windLabel.textColor = UIColor.red
+                    }
+                    
+                } catch let jsonError as NSError {
                     // Error occurred while trying to convert the data into a Swift dictionary.
                     
                     
