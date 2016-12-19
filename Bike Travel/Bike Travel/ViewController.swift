@@ -25,7 +25,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var speedLabel: UIBarButtonItem!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var windLabel: UILabel!
-    @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet var activity: UIActivityIndicatorView!
+    
     
     //User Location Variable
     let manager = CLLocationManager()
@@ -204,7 +205,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
                     //Change Label To Speed in MPH
                     self.windLabel.text = String(describing: self.speed!) + " mph"
-                    self.loadingLabel.text = ""
+                    self.activity.stopAnimating()
                     
                     if (Double(self.speed)! < 8.0) {
                         self.windLabel.textColor = UIColor.green
