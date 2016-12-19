@@ -46,8 +46,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     let openWeatherMapAPIKey = "2a0e4c51a24010f830e178e810f59517"
     var speed : String!
     
-    var lat : String!
-    var long : String!
+    var lat : Double!
+    var long : Double!
     
     //Recieve Memory Warning Method
     override func didReceiveMemoryWarning() {
@@ -92,7 +92,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         //Call To Get Weather
         getWeather(city: "wheatfield,in")
-    
+        
     }
     
     /**
@@ -112,11 +112,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         myMap.setRegion(region, animated: true)
         self.myMap.showsUserLocation = true
         
+        //self.lat = location.coordinate.latitude
+        //self.long = location.coordinate.longitude
+        
         //Allow User To Move off User Location
         manager.stopUpdatingLocation()
         
-        //Sets Wind Label in Bottom Right
-        self.windLabel.text = String(describing: self.speed!) + " mph"
+
         
     }
     
@@ -161,7 +163,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // Simple Network Task
         let session = URLSession.shared
         
-        let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?APPID=\(openWeatherMapAPIKey)&q=\(city)")!
+        //let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?APPID=\(openWeatherMapAPIKey)&q=\(city)")!
+        let x = 35
+        let y = 139
+         let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?lat=\(x)&lon=\(y)&appid=\(openWeatherMapAPIKey)")!
         
         // The data task retrieves the data.
         let dataTask = session.dataTask(with: weatherRequestURL as URL) {
@@ -180,6 +185,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     
                     // Print Contents Console.
                     
+                    /*
                     print("Date and time: \(weather["dt"]!)")
                     print("City: \(weather["name"]!)")
                     
@@ -198,10 +204,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
                     print("Wind direction: \(weather["wind"]!["deg"]!!) degrees")
                     print("Wind speed: \(weather["wind"]!["speed"]!!)")
+                    */
                 
                     //Set speed
                     let x = weather["wind"]!["speed"]!
                     self.speed = String(describing: x!)
+
+                    //Change Label To Speed in MPH
+                    self.windLabel.text = String(describing: self.speed!) + " mph"
+
                     
                 }
                 catch let jsonError as NSError {
@@ -215,6 +226,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         // Resume
         dataTask.resume()
+        
     }
  
     /**

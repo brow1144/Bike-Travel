@@ -130,9 +130,9 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U41-qJ-pi3">
-                                <rect key="frame" x="23" y="560" width="70" height="21"/>
+                                <rect key="frame" x="23" y="560" width="179" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="fqg-x6-AD2"/>
+                                    <constraint firstAttribute="width" constant="179" id="fQx-8U-yER"/>
                                     <constraint firstAttribute="height" constant="21" id="uJa-Sz-d90"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
