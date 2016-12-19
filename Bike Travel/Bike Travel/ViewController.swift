@@ -205,14 +205,36 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
                     //Change Label To Speed in MPH
                     self.windLabel.text = String(describing: self.speed!) + " mph"
+                    
+                    //Stop Activity Animation
                     self.activity.stopAnimating()
                     
+                    //Color Palet
+                    let myGreenColor = UIColor(
+                        red:26.0/255.0,
+                        green:230.0/255.0,
+                        blue:23.0/255.0,
+                        alpha:1.0)
+                    
+                    let myYellowColor = UIColor(
+                        red:255.0/255.0,
+                        green:245.0/255.0,
+                        blue:0.0/255.0,
+                        alpha:1.0)
+                    
+                    let myRedColor = UIColor(
+                        red:255.0/255.0,
+                        green:0.0/255.0,
+                        blue:0.0/255.0,
+                        alpha:1.0)
+                                        
+                    //Chaning Color Depending On Speed
                     if (Double(self.speed)! < 8.0) {
-                        self.windLabel.textColor = UIColor.green
+                        self.windLabel.textColor = myGreenColor
                     } else if (Double(self.speed)! < 18.0) {
-                        self.windLabel.textColor = UIColor.yellow
+                        self.windLabel.textColor = myYellowColor
                     } else if (Double(self.speed)! > 20.0) {
-                        self.windLabel.textColor = UIColor.red
+                        self.windLabel.textColor = myRedColor
                     }
                     
                 } catch let jsonError as NSError {
