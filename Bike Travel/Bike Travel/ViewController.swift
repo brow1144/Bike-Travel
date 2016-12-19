@@ -24,6 +24,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var distanceBox: UIImageView!
     @IBOutlet weak var speedLabel: UIBarButtonItem!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var loadingLabel: UILabel!
     
     //User Location Variable
     let manager = CLLocationManager()
@@ -39,6 +41,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     //Slider Value (Default is 9.8mph)
     var sliderValue : Double = 9.8
+    
+    //Weather Variables
+    let openWeatherMapBaseURL = "http://api.openweathermap.org/data/2.5/weather"
+    let openWeatherMapAPIKey = "2a0e4c51a24010f830e178e810f59517"
+    var speed : String!
+    var weatherRequestURL : NSURL!
     
     //Recieve Memory Warning Method
     override func didReceiveMemoryWarning() {
@@ -61,14 +69,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.timeBox.image = nil
         self.distanceBox.image = nil
         
-        //User Location Set - Up
+        //User Location Set-Up
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
         
         
-        //User Notifications Set - Up
+        //User Notifications Set-Up
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
         //User Notifications
@@ -80,7 +88,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
         let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    
+        
     }
     
     /**
@@ -99,9 +107,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let region : MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         myMap.setRegion(region, animated: true)
         self.myMap.showsUserLocation = true
+   
+        //Create URL
+        weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&appid=\(openWeatherMapAPIKey)")!
         
         //Allow User To Move off User Location
         manager.stopUpdatingLocation()
+        
+        //Call To Get Weather
+        getWeather(city: "wheatfield,in")
+        
     }
     
     /**
@@ -134,6 +149,85 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.speedLabel.title = ("\(Int(sender.value))" + " mph")
     }
     
+    /**
+     Method To Retireve Weather Data From Open Weather API
+     
+     - Parameter String:    String of City Name
+     
+    */
+    func getWeather(city: String) {
+        
+        // Simple Network Task
+        let session = URLSession.shared
+        
+        // The data task retrieves the data.
+        let dataTask = session.dataTask(with: weatherRequestURL as URL) {
+            (data: Data?, response: URLResponse?, error: Error?) in
+            if let error = error {
+                // Error While Trying to get Data For Weather
+                print("Error:\n\(error)")
+            }
+            else {
+                // Response Worked!
+                do {
+                    // Convert that data into a Swift dictionary
+                    let weather = try JSONSerialization.jsonObject(
+                        with: data!,
+                        options: .mutableContainers) as! [String: AnyObject]
+                    
+                    // Print Contents Console.
+                    
+                    /*
+                    print("Date and time: \(weather["dt"]!)")
+                    print("City: \(weather["name"]!)")
+                    
+                    print("Longitude: \(weather["coord"]!["lon"]!!)")
+                    print("Latitude: \(weather["coord"]!["lat"]!!)")
+                    
+                    print("Temperature: \(weather["main"]!["temp"]!!)")
+                    print("Humidity: \(weather["main"]!["humidity"]!!)")
+                    print("Pressure: \(weather["main"]!["pressure"]!!)")
+                    
+                    print("Cloud cover: \(weather["clouds"]!["all"]!!)")
+                    
+                    print("Country: \(weather["sys"]!["country"]!!)")
+                    print("Sunrise: \(weather["sys"]!["sunrise"]!!)")
+                    print("Sunset: \(weather["sys"]!["sunset"]!!)")
+
+                    print("Wind direction: \(weather["wind"]!["deg"]!!) degrees")
+                    print("Wind speed: \(weather["wind"]!["speed"]!!)")
+                    */
+                
+                    //Set speed
+                    let x = weather["wind"]!["speed"]!
+                    self.speed = String(describing: x!)
+
+                    //Change Label To Speed in MPH
+                    self.windLabel.text = String(describing: self.speed!) + " mph"
+                    self.loadingLabel.text = ""
+                    
+                    if (Double(self.speed)! < 8.0) {
+                        self.windLabel.textColor = UIColor.green
+                    } else if (Double(self.speed)! < 18.0) {
+                        self.windLabel.textColor = UIColor.yellow
+                    } else if (Double(self.speed)! > 20.0) {
+                        self.windLabel.textColor = UIColor.red
+                    }
+                    
+                } catch let jsonError as NSError {
+                    // Error occurred while trying to convert the data into a Swift dictionary.
+                    
+                    
+                    print("JSON error description: \(jsonError.description)")
+                }
+            }
+        }
+        
+        // Resume
+        dataTask.resume()
+        
+    }
+ 
     /**
      Called When user is Finished Typing and hits Route
      
