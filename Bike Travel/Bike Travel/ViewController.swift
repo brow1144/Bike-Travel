@@ -25,6 +25,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var speedLabel: UIBarButtonItem!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var loadingLabel: UILabel!
     
     //User Location Variable
     let manager = CLLocationManager()
@@ -48,6 +49,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     var lat : Double!
     var long : Double!
+    
+    var weatherRequestURL : NSURL!
     
     //Recieve Memory Warning Method
     override func didReceiveMemoryWarning() {
@@ -90,8 +93,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
-        //Call To Get Weather
-        getWeather(city: "wheatfield,in")
         
     }
     
@@ -112,13 +113,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         myMap.setRegion(region, animated: true)
         self.myMap.showsUserLocation = true
         
-        //self.lat = location.coordinate.latitude
-        //self.long = location.coordinate.longitude
+        self.lat = location.coordinate.latitude
+        self.long = location.coordinate.longitude
+        
+        weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&appid=\(openWeatherMapAPIKey)")!
+
         
         //Allow User To Move off User Location
         manager.stopUpdatingLocation()
         
-
+        //Call To Get Weather
+        getWeather(city: "wheatfield,in")
         
     }
     
@@ -164,9 +169,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let session = URLSession.shared
         
         //let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?APPID=\(openWeatherMapAPIKey)&q=\(city)")!
-        let x = 35
-        let y = 139
-         let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?lat=\(x)&lon=\(y)&appid=\(openWeatherMapAPIKey)")!
+        //let x = 35
+        //let y = 139
+         //let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?lat=\(lat)&lon=\(long)&appid=\(openWeatherMapAPIKey)")!
         
         // The data task retrieves the data.
         let dataTask = session.dataTask(with: weatherRequestURL as URL) {
@@ -212,6 +217,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
                     //Change Label To Speed in MPH
                     self.windLabel.text = String(describing: self.speed!) + " mph"
+                    self.loadingLabel.text = ""
 
                     
                 }
