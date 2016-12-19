@@ -46,6 +46,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     let openWeatherMapAPIKey = "2a0e4c51a24010f830e178e810f59517"
     var speed : String!
     
+    var lat : String!
+    var long : String!
+    
     //Recieve Memory Warning Method
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,9 +62,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myMap.delegate = self
- 
-        //Call To Get Weather
-        getWeather(city: "Chicago")
         
         //Sets Slider To Be Able To Slide
         self.slider.isEnabled = true
@@ -70,14 +70,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.timeBox.image = nil
         self.distanceBox.image = nil
         
-        //User Location Set - Up
+        //User Location Set-Up
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
         
         
-        //User Notifications Set - Up
+        //User Notifications Set-Up
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
         //User Notifications
@@ -89,6 +89,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
         let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        //Call To Get Weather
+        getWeather(city: "wheatfield,in")
     
     }
     
@@ -114,6 +117,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         //Sets Wind Label in Bottom Right
         self.windLabel.text = String(describing: self.speed!) + " mph"
+        
     }
     
     /**
