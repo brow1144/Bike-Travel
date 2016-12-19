@@ -61,7 +61,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.myMap.delegate = self
  
         //Call To Get Weather
-        getWeather(city: "Tampa")
+        getWeather(city: "Chicago")
         
         //Sets Slider To Be Able To Slide
         self.slider.isEnabled = true
@@ -113,7 +113,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         manager.stopUpdatingLocation()
         
         //Sets Wind Label in Bottom Right
-        self.windLabel.text = String(describing: self.speed!)
+        self.windLabel.text = String(describing: self.speed!) + " mph"
     }
     
     /**
