@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B1447AD1E070DD200B1FE78 /* WeatherGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1447AC1E070DD200B1FE78 /* WeatherGetter.swift */; };
 		2BBEBCBA1DF3B3E100894A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEBCB91DF3B3E100894A58 /* AppDelegate.swift */; };
 		2BBEBCBC1DF3B3E100894A58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEBCBB1DF3B3E100894A58 /* ViewController.swift */; };
 		2BBEBCBF1DF3B3E100894A58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEBCBD1DF3B3E100894A58 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B1447AC1E070DD200B1FE78 /* WeatherGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherGetter.swift; path = ../WeatherGetter.swift; sourceTree = "<group>"; };
 		2BBEBCB61DF3B3E100894A58 /* Bike Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bike Travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBEBCB91DF3B3E100894A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBEBCBB1DF3B3E100894A58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				2BBEBCB91DF3B3E100894A58 /* AppDelegate.swift */,
 				2BBEBCBB1DF3B3E100894A58 /* ViewController.swift */,
+				2B1447AC1E070DD200B1FE78 /* WeatherGetter.swift */,
 				2BBEBCBD1DF3B3E100894A58 /* Main.storyboard */,
 				2BBEBCC01DF3B3E100894A58 /* Assets.xcassets */,
 				2BBEBCC21DF3B3E100894A58 /* LaunchScreen.storyboard */,
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BBEBCBC1DF3B3E100894A58 /* ViewController.swift in Sources */,
+				2B1447AD1E070DD200B1FE78 /* WeatherGetter.swift in Sources */,
 				2BBEBCBA1DF3B3E100894A58 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
