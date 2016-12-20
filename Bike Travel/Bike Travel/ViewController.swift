@@ -207,6 +207,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     //Set speed
                     let x = weather["wind"]!["speed"]!
                     self.speed = String(describing: x!)
+                    let speedTwo = Double(round(100 * Double(self.speed)!) / 100)
+
                     
                     //Set Direction In Degrees
                     let y = weather["wind"]!["deg"]!
@@ -214,10 +216,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     
                     //Stop Activity Animation
                     self.activity.stopAnimating()
+                    
+                    if (self.activity.isAnimating) {
+                        self.activity.stopAnimating()
+                    }
 
                     //Change Label To Speed in MPH
-                    self.windLabel.text = String(describing: self.speed!) + " mph"
-                    //self.directionLabel.text = String(describing: self.direction!) + "°"
+                    //self.windLabel.text = String(describing: self.speed!) + " mph"
+                    self.windLabel.text = String(describing: speedTwo) + " mph"
+                    
                     
                     //Color Palet
                     let myGreenColor = UIColor(
