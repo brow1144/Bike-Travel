@@ -25,8 +25,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var speedLabel: UIBarButtonItem!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet var activity: UIActivityIndicatorView!
-    @IBOutlet var directionLabel: UILabel!
     
     //User Location Variable
     let manager = CLLocationManager()
