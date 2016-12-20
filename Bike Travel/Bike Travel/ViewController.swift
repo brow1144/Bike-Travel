@@ -28,6 +28,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet var activity: UIActivityIndicatorView!
     @IBOutlet var arrowImage: UIImageView!
+    @IBOutlet var windBackground: UIImageView!
     
     //User Location Variable
     let manager = CLLocationManager()
@@ -74,6 +75,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //Make Time and Distance Box Invisible When Launched
         self.timeBox.image = nil
         self.distanceBox.image = nil
+        
+        //Make Wind Box Invisible
+        self.windBackground.image = nil
         
         //User Location Set-Up
         manager.delegate = self
@@ -217,12 +221,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     //Stop Activity Animation
                     self.activity.stopAnimating()
                     
-                    if (self.activity.isAnimating) {
-                        self.activity.stopAnimating()
-                    }
-
-                    //Change Label To Speed in MPH
-                    //self.windLabel.text = String(describing: self.speed!) + " mph"
+                    //Make Wind Data Panel Visible                  
+                    self.windBackground.image = #imageLiteral(resourceName: "ace")
                     self.windLabel.text = String(describing: speedTwo) + " mph"
                     
                     
@@ -319,7 +319,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 }
             }
         }
-        
         // Resume
         dataTask.resume()
     }

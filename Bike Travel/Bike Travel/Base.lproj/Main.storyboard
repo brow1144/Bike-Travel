@@ -129,7 +129,7 @@
                                     <constraint firstAttribute="width" constant="89" id="gY5-Qi-6MM"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U41-qJ-pi3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U41-qJ-pi3">
                                 <rect key="frame" x="23" y="549" width="74" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="74" id="cg3-lK-phW"/>
@@ -139,13 +139,6 @@
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Klo-1x-vCF">
-                                <rect key="frame" x="70" y="550" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="S6c-JP-1Lt"/>
-                                    <constraint firstAttribute="width" constant="20" id="ZBT-8h-G1T"/>
-                                </constraints>
-                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgK-vk-IkM">
                                 <rect key="frame" x="33" y="569" width="95" height="21"/>
                                 <constraints>
@@ -163,11 +156,19 @@
                                     <constraint firstAttribute="width" constant="24" id="x9f-Zs-AQa"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Klo-1x-vCF">
+                                <rect key="frame" x="339" y="28" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="S6c-JP-1Lt"/>
+                                    <constraint firstAttribute="width" constant="20" id="ZBT-8h-G1T"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Klo-1x-vCF" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="2mw-vV-kid"/>
                             <constraint firstItem="AaX-R0-yT3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EsS-Pb-uiA"/>
-                            <constraint firstItem="Klo-1x-vCF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="54" id="Fo6-RM-mOf"/>
+                            <constraint firstItem="Klo-1x-vCF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="GLN-ga-RaW"/>
                             <constraint firstItem="aJa-rV-4Qo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="H5n-jf-tYt"/>
                             <constraint firstItem="zBX-zl-7kf" firstAttribute="top" secondItem="ymM-ew-kcf" secondAttribute="bottom" constant="17" id="I2R-Ok-ae4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AaX-R0-yT3" secondAttribute="bottom" id="ID9-Pz-WSl"/>
@@ -185,7 +186,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="zou-fT-KSE" secondAttribute="trailing" constant="15" id="hJ9-iB-4sW"/>
                             <constraint firstItem="zBX-zl-7kf" firstAttribute="top" secondItem="447-b1-x1g" secondAttribute="bottom" constant="8" id="hff-ge-oZf"/>
                             <constraint firstItem="hP8-ft-ojh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hoh-Cm-QQ3"/>
-                            <constraint firstItem="AaX-R0-yT3" firstAttribute="top" secondItem="Klo-1x-vCF" secondAttribute="bottom" constant="53" id="isV-Ig-07m"/>
                             <constraint firstItem="mgK-vk-IkM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="17" id="kIJ-1Q-n4O"/>
                             <constraint firstItem="zBX-zl-7kf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="kid-8g-6Sk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Y86-2o-xB6" secondAttribute="trailing" constant="29" id="mCt-jV-gCh"/>
@@ -217,6 +217,7 @@
                         <outlet property="timeBox" destination="447-b1-x1g" id="SJs-L1-VaK"/>
                         <outlet property="timeLabel" destination="voj-Wq-BoY" id="Oma-87-IYg"/>
                         <outlet property="timeSubLabel" destination="ymM-ew-kcf" id="Glq-IS-0Xw"/>
+                        <outlet property="windBackground" destination="aJa-rV-4Qo" id="V28-8K-n2W"/>
                         <outlet property="windLabel" destination="U41-qJ-pi3" id="irL-I7-5xg"/>
                     </connections>
                 </viewController>
