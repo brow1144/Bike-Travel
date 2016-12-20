@@ -26,7 +26,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var windLabel: UILabel!
     @IBOutlet var activity: UIActivityIndicatorView!
-    
+    @IBOutlet var directionLabel: UILabel!
     
     //User Location Variable
     let manager = CLLocationManager()
@@ -47,6 +47,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     let openWeatherMapBaseURL = "http://api.openweathermap.org/data/2.5/weather"
     let openWeatherMapAPIKey = "2a0e4c51a24010f830e178e810f59517"
     var speed : String!
+    var direction : String!
     var weatherRequestURL : NSURL!
     
     //Recieve Memory Warning Method
@@ -202,12 +203,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     //Set speed
                     let x = weather["wind"]!["speed"]!
                     self.speed = String(describing: x!)
-
-                    //Change Label To Speed in MPH
-                    self.windLabel.text = String(describing: self.speed!) + " mph"
+                    
+                    //Set Direction In Degrees
+                    let y = weather["wind"]!["deg"]!
+                    self.direction = String(describing: y!)
                     
                     //Stop Activity Animation
                     self.activity.stopAnimating()
+
+                    //Change Label To Speed in MPH
+                    self.windLabel.text = String(describing: self.speed!) + " mph"
+                    //self.directionLabel.text = String(describing: self.direction!) + "°"
                     
                     //Color Palet
                     let myGreenColor = UIColor(
@@ -227,19 +233,59 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         green:0.0/255.0,
                         blue:0.0/255.0,
                         alpha:1.0)
-                                        
+                    
                     //Chaning Color Depending On Speed
                     if (Double(self.speed)! < 8.0) {
                         self.windLabel.textColor = myGreenColor
+                        self.directionLabel.textColor = myGreenColor
                     } else if (Double(self.speed)! < 18.0) {
                         self.windLabel.textColor = myYellowColor
+                        self.directionLabel.textColor = myYellowColor
                     } else if (Double(self.speed)! > 20.0) {
                         self.windLabel.textColor = myRedColor
+                        self.directionLabel.textColor = myRedColor
                     }
+                    
+                    //Takes Direction Degrees and Changes to Direction Symbol
+                    if (Double(self.direction)! > 348.75 || Double(self.direction)! < 11.25) {
+                        self.directionLabel.text = "N"
+                    } else if (Double(self.direction)! >= 11.25 && Double(self.direction)! < 33.75) {
+                        self.directionLabel.text = "NNE"
+                    } else if (Double(self.direction)! >= 33.75 && Double(self.direction)! < 56.25) {
+                        self.directionLabel.text = "NE"
+                    } else if (Double(self.direction)! >= 56.25 && Double(self.direction)! < 78.75) {
+                        self.directionLabel.text = "ENE"
+                    } else if (Double(self.direction)! >= 78.75 && Double(self.direction)! < 101.25) {
+                        self.directionLabel.text = "E"
+                    } else if (Double(self.direction)! >= 101.25 && Double(self.direction)! < 123.75) {
+                        self.directionLabel.text = "ESE"
+                    } else if (Double(self.direction)! >= 123.75 && Double(self.direction)! < 146.25) {
+                        self.directionLabel.text = "SE"
+                    } else if (Double(self.direction)! >= 146.25 && Double(self.direction)! < 168.75) {
+                        self.directionLabel.text = "SSE"
+                    } else if (Double(self.direction)! >= 168.75 && Double(self.direction)! < 191.25) {
+                        self.directionLabel.text = "S"
+                    } else if (Double(self.direction)! >= 191.25 && Double(self.direction)! < 213.75) {
+                        self.directionLabel.text = "SSW"
+                    } else if (Double(self.direction)! >= 213.75 && Double(self.direction)! < 236.75) {
+                        self.directionLabel.text = "SW"
+                    } else if (Double(self.direction)! >= 236.75 && Double(self.direction)! < 258.75) {
+                        self.directionLabel.text = "WSW"
+                    } else if (Double(self.direction)! >= 258.75 && Double(self.direction)! < 281.25) {
+                        self.directionLabel.text = "W"
+                    } else if (Double(self.direction)! >= 281.25 && Double(self.direction)! < 303.75) {
+                        self.directionLabel.text = "WNW"
+                    } else if (Double(self.direction)! >= 303.75 && Double(self.direction)! < 326.25) {
+                        self.directionLabel.text = "NW"
+                    } else if (Double(self.direction)! >= 326.25 && Double(self.direction)! < 348.75) {
+                        self.directionLabel.text = "NNW"
+                    }
+                    
+                    //Stop Activity Animation
+                    self.activity.stopAnimating()
                     
                 } catch let jsonError as NSError {
                     // Error occurred while trying to convert the data into a Swift dictionary.
-                    
                     
                     print("JSON error description: \(jsonError.description)")
                 }
@@ -248,7 +294,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         // Resume
         dataTask.resume()
-        
     }
  
     /**
