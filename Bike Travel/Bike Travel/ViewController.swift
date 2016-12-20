@@ -27,6 +27,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var windLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet var activity: UIActivityIndicatorView!
+    @IBOutlet var arrowImage: UIImageView!
     
     //User Location Variable
     let manager = CLLocationManager()
@@ -63,6 +64,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myMap.delegate = self
+        
+        //Make Arrow Image Invisible
+        self.arrowImage.image = nil
         
         //Sets Slider To Be Able To Slide
         self.slider.isEnabled = true
@@ -249,36 +253,52 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     //Takes Direction Degrees and Changes to Direction Symbol
                     if (Double(self.direction)! > 348.75 || Double(self.direction)! < 11.25) {
                         self.directionLabel.text = "N"
+                        self.arrowImage.image = #imageLiteral(resourceName: "Narrow")
                     } else if (Double(self.direction)! >= 11.25 && Double(self.direction)! < 33.75) {
                         self.directionLabel.text = "NNE"
+                        self.arrowImage.image = #imageLiteral(resourceName: "NNEarrow")
                     } else if (Double(self.direction)! >= 33.75 && Double(self.direction)! < 56.25) {
                         self.directionLabel.text = "NE"
+                        self.arrowImage.image = #imageLiteral(resourceName: "NEarrow")
                     } else if (Double(self.direction)! >= 56.25 && Double(self.direction)! < 78.75) {
                         self.directionLabel.text = "ENE"
+                        self.arrowImage.image = #imageLiteral(resourceName: "ENEarrow")
                     } else if (Double(self.direction)! >= 78.75 && Double(self.direction)! < 101.25) {
                         self.directionLabel.text = "E"
+                        self.arrowImage.image = #imageLiteral(resourceName: "Earrow")
                     } else if (Double(self.direction)! >= 101.25 && Double(self.direction)! < 123.75) {
                         self.directionLabel.text = "ESE"
+                        self.arrowImage.image = #imageLiteral(resourceName: "ESEarrow")
                     } else if (Double(self.direction)! >= 123.75 && Double(self.direction)! < 146.25) {
                         self.directionLabel.text = "SE"
+                        self.arrowImage.image = #imageLiteral(resourceName: "SEarrow")
                     } else if (Double(self.direction)! >= 146.25 && Double(self.direction)! < 168.75) {
                         self.directionLabel.text = "SSE"
+                        self.arrowImage.image = #imageLiteral(resourceName: "SSEarrow")
                     } else if (Double(self.direction)! >= 168.75 && Double(self.direction)! < 191.25) {
                         self.directionLabel.text = "S"
+                        self.arrowImage.image = #imageLiteral(resourceName: "Sarrow")
                     } else if (Double(self.direction)! >= 191.25 && Double(self.direction)! < 213.75) {
                         self.directionLabel.text = "SSW"
+                        self.arrowImage.image = #imageLiteral(resourceName: "SSWarrow")
                     } else if (Double(self.direction)! >= 213.75 && Double(self.direction)! < 236.75) {
                         self.directionLabel.text = "SW"
+                        self.arrowImage.image = #imageLiteral(resourceName: "SWarrow")
                     } else if (Double(self.direction)! >= 236.75 && Double(self.direction)! < 258.75) {
                         self.directionLabel.text = "WSW"
+                        self.arrowImage.image = #imageLiteral(resourceName: "WSWarrow")
                     } else if (Double(self.direction)! >= 258.75 && Double(self.direction)! < 281.25) {
                         self.directionLabel.text = "W"
+                        self.arrowImage.image = #imageLiteral(resourceName: "Warrow")
                     } else if (Double(self.direction)! >= 281.25 && Double(self.direction)! < 303.75) {
                         self.directionLabel.text = "WNW"
+                        self.arrowImage.image = #imageLiteral(resourceName: "WNWarrow")
                     } else if (Double(self.direction)! >= 303.75 && Double(self.direction)! < 326.25) {
                         self.directionLabel.text = "NW"
+                        self.arrowImage.image = #imageLiteral(resourceName: "NWarrow")
                     } else if (Double(self.direction)! >= 326.25 && Double(self.direction)! < 348.75) {
                         self.directionLabel.text = "NNW"
+                        self.arrowImage.image = #imageLiteral(resourceName: "NNWarrow")
                     }
                     
                     //Stop Activity Animation
