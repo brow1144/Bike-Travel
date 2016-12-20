@@ -251,6 +251,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     }
                     
                     //Takes Direction Degrees and Changes to Direction Symbol
+                    //Also Adds An Arrow To The Top Right To Show Direction
                     if (Double(self.direction)! > 348.75 || Double(self.direction)! < 11.25) {
                         self.directionLabel.text = "N"
                         self.arrowImage.image = #imageLiteral(resourceName: "Narrow")
