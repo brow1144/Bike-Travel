@@ -26,7 +26,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var windLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
-    @IBOutlet var activity: UIActivityIndicatorView!
     @IBOutlet var arrowImage: UIImageView!
     @IBOutlet var windBackground: UIImageView!
     
@@ -218,13 +217,63 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     let y = weather["wind"]!["deg"]!
                     self.direction = String(describing: y!)
                     
-                    //Stop Activity Animation
-                    self.activity.stopAnimating()
-                    
-                    //Make Wind Data Panel Visible                  
-                    self.windBackground.image = #imageLiteral(resourceName: "ace")
-                    self.windLabel.text = String(describing: speedTwo) + " mph"
-                    
+                    //Make Wind Data Panel Visible
+                    DispatchQueue.main.async {
+                        self.windBackground.image = #imageLiteral(resourceName: "ace")
+                        self.windLabel.text = String(describing: speedTwo) + " mph"
+                        
+                        //Takes Direction Degrees and Changes to Direction Symbol
+                        //Also Adds An Arrow To The Top Right To Show Direction
+                        if (Double(self.direction)! > 348.75 || Double(self.direction)! < 11.25) {
+                            self.directionLabel.text = "N"
+                            self.arrowImage.image = #imageLiteral(resourceName: "Narrow")
+                        } else if (Double(self.direction)! >= 11.25 && Double(self.direction)! < 33.75) {
+                            self.directionLabel.text = "NNE"
+                            self.arrowImage.image = #imageLiteral(resourceName: "NNEarrow")
+                        } else if (Double(self.direction)! >= 33.75 && Double(self.direction)! < 56.25) {
+                            self.directionLabel.text = "NE"
+                            self.arrowImage.image = #imageLiteral(resourceName: "NEarrow")
+                        } else if (Double(self.direction)! >= 56.25 && Double(self.direction)! < 78.75) {
+                            self.directionLabel.text = "ENE"
+                            self.arrowImage.image = #imageLiteral(resourceName: "ENEarrow")
+                        } else if (Double(self.direction)! >= 78.75 && Double(self.direction)! < 101.25) {
+                            self.directionLabel.text = "E"
+                            self.arrowImage.image = #imageLiteral(resourceName: "Earrow")
+                        } else if (Double(self.direction)! >= 101.25 && Double(self.direction)! < 123.75) {
+                            self.directionLabel.text = "ESE"
+                            self.arrowImage.image = #imageLiteral(resourceName: "ESEarrow")
+                        } else if (Double(self.direction)! >= 123.75 && Double(self.direction)! < 146.25) {
+                            self.directionLabel.text = "SE"
+                            self.arrowImage.image = #imageLiteral(resourceName: "SEarrow")
+                        } else if (Double(self.direction)! >= 146.25 && Double(self.direction)! < 168.75) {
+                            self.directionLabel.text = "SSE"
+                            self.arrowImage.image = #imageLiteral(resourceName: "SSEarrow")
+                        } else if (Double(self.direction)! >= 168.75 && Double(self.direction)! < 191.25) {
+                            self.directionLabel.text = "S"
+                            self.arrowImage.image = #imageLiteral(resourceName: "Sarrow")
+                        } else if (Double(self.direction)! >= 191.25 && Double(self.direction)! < 213.75) {
+                            self.directionLabel.text = "SSW"
+                            self.arrowImage.image = #imageLiteral(resourceName: "SSWarrow")
+                        } else if (Double(self.direction)! >= 213.75 && Double(self.direction)! < 236.75) {
+                            self.directionLabel.text = "SW"
+                            self.arrowImage.image = #imageLiteral(resourceName: "SWarrow")
+                        } else if (Double(self.direction)! >= 236.75 && Double(self.direction)! < 258.75) {
+                            self.directionLabel.text = "WSW"
+                            self.arrowImage.image = #imageLiteral(resourceName: "WSWarrow")
+                        } else if (Double(self.direction)! >= 258.75 && Double(self.direction)! < 281.25) {
+                            self.directionLabel.text = "W"
+                            self.arrowImage.image = #imageLiteral(resourceName: "Warrow")
+                        } else if (Double(self.direction)! >= 281.25 && Double(self.direction)! < 303.75) {
+                            self.directionLabel.text = "WNW"
+                            self.arrowImage.image = #imageLiteral(resourceName: "WNWarrow")
+                        } else if (Double(self.direction)! >= 303.75 && Double(self.direction)! < 326.25) {
+                            self.directionLabel.text = "NW"
+                            self.arrowImage.image = #imageLiteral(resourceName: "NWarrow")
+                        } else if (Double(self.direction)! >= 326.25 && Double(self.direction)! < 348.75) {
+                            self.directionLabel.text = "NNW"
+                            self.arrowImage.image = #imageLiteral(resourceName: "NNWarrow")
+                        }
+                    }
                     
                     //Color Palet
                     let myGreenColor = UIColor(
@@ -256,62 +305,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         self.windLabel.textColor = myRedColor
                         self.directionLabel.textColor = myRedColor
                     }
-                    
-                    //Takes Direction Degrees and Changes to Direction Symbol
-                    //Also Adds An Arrow To The Top Right To Show Direction
-                    if (Double(self.direction)! > 348.75 || Double(self.direction)! < 11.25) {
-                        self.directionLabel.text = "N"
-                        self.arrowImage.image = #imageLiteral(resourceName: "Narrow")
-                    } else if (Double(self.direction)! >= 11.25 && Double(self.direction)! < 33.75) {
-                        self.directionLabel.text = "NNE"
-                        self.arrowImage.image = #imageLiteral(resourceName: "NNEarrow")
-                    } else if (Double(self.direction)! >= 33.75 && Double(self.direction)! < 56.25) {
-                        self.directionLabel.text = "NE"
-                        self.arrowImage.image = #imageLiteral(resourceName: "NEarrow")
-                    } else if (Double(self.direction)! >= 56.25 && Double(self.direction)! < 78.75) {
-                        self.directionLabel.text = "ENE"
-                        self.arrowImage.image = #imageLiteral(resourceName: "ENEarrow")
-                    } else if (Double(self.direction)! >= 78.75 && Double(self.direction)! < 101.25) {
-                        self.directionLabel.text = "E"
-                        self.arrowImage.image = #imageLiteral(resourceName: "Earrow")
-                    } else if (Double(self.direction)! >= 101.25 && Double(self.direction)! < 123.75) {
-                        self.directionLabel.text = "ESE"
-                        self.arrowImage.image = #imageLiteral(resourceName: "ESEarrow")
-                    } else if (Double(self.direction)! >= 123.75 && Double(self.direction)! < 146.25) {
-                        self.directionLabel.text = "SE"
-                        self.arrowImage.image = #imageLiteral(resourceName: "SEarrow")
-                    } else if (Double(self.direction)! >= 146.25 && Double(self.direction)! < 168.75) {
-                        self.directionLabel.text = "SSE"
-                        self.arrowImage.image = #imageLiteral(resourceName: "SSEarrow")
-                    } else if (Double(self.direction)! >= 168.75 && Double(self.direction)! < 191.25) {
-                        self.directionLabel.text = "S"
-                        self.arrowImage.image = #imageLiteral(resourceName: "Sarrow")
-                    } else if (Double(self.direction)! >= 191.25 && Double(self.direction)! < 213.75) {
-                        self.directionLabel.text = "SSW"
-                        self.arrowImage.image = #imageLiteral(resourceName: "SSWarrow")
-                    } else if (Double(self.direction)! >= 213.75 && Double(self.direction)! < 236.75) {
-                        self.directionLabel.text = "SW"
-                        self.arrowImage.image = #imageLiteral(resourceName: "SWarrow")
-                    } else if (Double(self.direction)! >= 236.75 && Double(self.direction)! < 258.75) {
-                        self.directionLabel.text = "WSW"
-                        self.arrowImage.image = #imageLiteral(resourceName: "WSWarrow")
-                    } else if (Double(self.direction)! >= 258.75 && Double(self.direction)! < 281.25) {
-                        self.directionLabel.text = "W"
-                        self.arrowImage.image = #imageLiteral(resourceName: "Warrow")
-                    } else if (Double(self.direction)! >= 281.25 && Double(self.direction)! < 303.75) {
-                        self.directionLabel.text = "WNW"
-                        self.arrowImage.image = #imageLiteral(resourceName: "WNWarrow")
-                    } else if (Double(self.direction)! >= 303.75 && Double(self.direction)! < 326.25) {
-                        self.directionLabel.text = "NW"
-                        self.arrowImage.image = #imageLiteral(resourceName: "NWarrow")
-                    } else if (Double(self.direction)! >= 326.25 && Double(self.direction)! < 348.75) {
-                        self.directionLabel.text = "NNW"
-                        self.arrowImage.image = #imageLiteral(resourceName: "NNWarrow")
-                    }
-                    
-                    //Stop Activity Animation
-                    self.activity.stopAnimating()
-                    
+                                        
                 } catch let jsonError as NSError {
                     // Error occurred while trying to convert the data into a Swift dictionary.
                     

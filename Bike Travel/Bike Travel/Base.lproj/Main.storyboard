@@ -156,19 +156,10 @@
                                     <constraint firstAttribute="width" constant="24" id="x9f-Zs-AQa"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Klo-1x-vCF">
-                                <rect key="frame" x="339" y="28" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="S6c-JP-1Lt"/>
-                                    <constraint firstAttribute="width" constant="20" id="ZBT-8h-G1T"/>
-                                </constraints>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Klo-1x-vCF" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="2mw-vV-kid"/>
                             <constraint firstItem="AaX-R0-yT3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EsS-Pb-uiA"/>
-                            <constraint firstItem="Klo-1x-vCF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="GLN-ga-RaW"/>
                             <constraint firstItem="aJa-rV-4Qo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="H5n-jf-tYt"/>
                             <constraint firstItem="zBX-zl-7kf" firstAttribute="top" secondItem="ymM-ew-kcf" secondAttribute="bottom" constant="17" id="I2R-Ok-ae4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AaX-R0-yT3" secondAttribute="bottom" id="ID9-Pz-WSl"/>
@@ -204,7 +195,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activity" destination="Klo-1x-vCF" id="pgk-P2-Hia"/>
                         <outlet property="arrowImage" destination="pOS-Kb-sBA" id="0vK-Ja-i2v"/>
                         <outlet property="directionLabel" destination="mgK-vk-IkM" id="MSz-wd-stQ"/>
                         <outlet property="distanceBox" destination="zBX-zl-7kf" id="c3R-8H-0oL"/>
