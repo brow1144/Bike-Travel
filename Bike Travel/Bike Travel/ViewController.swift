@@ -416,12 +416,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     let minutes = myDouble1! * 60
                     let minutes1Int:Int = Int(minutes)
                     
-                    self.timeLabel.text = ("\(timeInHoursInt)" + " Hour(s)")
-                    self.timeSubLabel.text = ("\(minutes1Int)" + " Minutes")
-                    self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
-                    self.distanceSubLevel.text = "Distance"
-                    self.timeBox.image = UIImage( named : "ace" )
-                    self.distanceBox.image = UIImage( named : "ace" )
+                    DispatchQueue.main.async {
+
+                        self.timeLabel.text = ("\(timeInHoursInt)" + " Hour(s)")
+                        self.timeSubLabel.text = ("\(minutes1Int)" + " Minutes")
+                        self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
+                        self.distanceSubLevel.text = "Distance"
+                        self.timeBox.image = UIImage( named : "ace" )
+                        self.distanceBox.image = UIImage( named : "ace" )
+                    }
                 } else {
                 //Calculates Time in Minutes and Seconds
                     let period2: Character = "."
@@ -433,20 +436,23 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     let minutes2Int:Int = Int(timeRoundedTwoDecimals)
 
                     //Takes Care of Random Rounding Problem
-                    if ( (secondsInt == 1) || (secondsInt == 2) || (secondsInt == 3) || (secondsInt == 4) || (secondsInt == 5) || (secondsInt == 6) ) {
-                        self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + "0 Minutes")
-                    } else if ( (secondsInt == 7) || (secondsInt == 8) || (secondsInt == 9)) {
-                        self.timeLabel.text = ("\(minutes2Int)" + ":" + "00 Minutes")
+                    DispatchQueue.main.async {
 
-                    } else {
-                        self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + " Minutes")
-                    }
+                        if ( (secondsInt == 1) || (secondsInt == 2) || (secondsInt == 3) || (secondsInt == 4) || (secondsInt == 5) || (secondsInt == 6) ) {
+                            self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + "0 Minutes")
+                        } else if ( (secondsInt == 7) || (secondsInt == 8) || (secondsInt == 9)) {
+                            self.timeLabel.text = ("\(minutes2Int)" + ":" + "00 Minutes")
+
+                        } else {
+                            self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + " Minutes")
+                        }
                     
-                    self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
-                    self.timeSubLabel.text = "Time"
-                    self.distanceSubLevel.text = "Distance"
-                    self.timeBox.image = UIImage( named : "ace" )
-                    self.distanceBox.image = UIImage( named : "ace" )
+                        self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
+                        self.timeSubLabel.text = "Time"
+                        self.distanceSubLevel.text = "Distance"
+                        self.timeBox.image = UIImage( named : "ace" )
+                        self.distanceBox.image = UIImage( named : "ace" )
+                    }
                 }
             } else {
                 print("Error!")
