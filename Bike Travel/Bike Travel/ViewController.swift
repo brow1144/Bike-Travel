@@ -29,7 +29,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var calculate: UIBarButtonItem!
     @IBOutlet var arrowImage: UIImageView!
     @IBOutlet var windBackground: UIImageView!
-    
+        
     //User Location Variable
     let manager = CLLocationManager()
 
@@ -102,6 +102,46 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
+        //Long Press Set-Up
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
+        longPressGesture.minimumPressDuration = 0.5
+        self.myMap.addGestureRecognizer(longPressGesture)
+    }
+    
+    /**
+     Finding User Location
+     
+     - Parameter gesture:   UILong Press Recognizer
+     
+     */
+    func addAnnotationOnLongPress(gesture: UILongPressGestureRecognizer) {
+        
+        //Remove Map Overlays
+        let overlays = myMap.overlays
+        myMap.removeOverlays(overlays)
+        
+        //Remove All Previous Map Annotations
+        if (pointAnnotation != nil) {
+            myMap.removeAnnotation(pointAnnotation)
+        }
+        
+        if gesture.state == .ended {
+            let point = gesture.location(in: self.myMap)
+            let coordinate = self.myMap.convert(point, toCoordinateFrom: self.myMap)
+
+            //let annotation = MKPointAnnotation()
+            self.pointAnnotation = MKPointAnnotation()
+
+            self.pointAnnotation.coordinate = coordinate
+            //Set title and subtitle if you want
+            self.pointAnnotation.title = "Title"
+            self.pointAnnotation.subtitle = "subtitle"
+            self.myMap.addAnnotation(self.pointAnnotation)
+            
+            //Allow To Calculate
+            self.calculate.isEnabled = true
+            
+        }
     }
     
     /**
