@@ -66,6 +66,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         self.myMap.delegate = self
         
+        longPressGesture()
+        
         //Make Calculate Route Button Un-Clickable 
         self.calculate.isEnabled = false
         
@@ -102,6 +104,27 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
+    }
+    
+    func longPressAction(myLongPress : UILongPressGestureRecognizer) {
+        
+        let myCGPoint = myLongPress.location(in: self.myMap)
+        let myMapPoint = myMap.convert(myCGPoint, toCoordinateFrom: self.myMap)
+        
+        let myAnnotation = MKPointAnnotation()
+        myAnnotation.coordinate = myMapPoint
+        myAnnotation.title = "Title"
+        myAnnotation.subtitle = "Subtitle"
+        
+        self.myMap.addAnnotation(myAnnotation)
+    }
+    
+    func longPressGesture() {
+        
+        let lpg = UILongPressGestureRecognizer(target: self, action: Selector(("longPressAction")))
+        lpg.minimumPressDuration = 1
+        
+        self.myMap.addGestureRecognizer(lpg)
     }
     
     /**
