@@ -102,6 +102,36 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
+        //Long Press Set-Up
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
+        longPressGesture.minimumPressDuration = 0.5
+        self.myMap.addGestureRecognizer(longPressGesture)
+    }
+    
+    /**
+     Finding User Location
+     
+     - Parameter gesture:   UILong Press Recognizer
+     
+     */
+    func addAnnotationOnLongPress(gesture: UILongPressGestureRecognizer) {
+        
+        if gesture.state == .ended {
+            let point = gesture.location(in: self.myMap)
+            let coordinate = self.myMap.convert(point, toCoordinateFrom: self.myMap)
+            print(coordinate)
+            //Now use this coordinate to add annotation on map.
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            //Set title and subtitle if you want
+            annotation.title = "Title"
+            annotation.subtitle = "subtitle"
+            self.myMap.addAnnotation(annotation)
+            
+            if (annotation != nil) {
+                self.calculate.isEnabled = true
+            }
+        }
     }
     
     /**
