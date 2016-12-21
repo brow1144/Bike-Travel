@@ -116,6 +116,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
      */
     func addAnnotationOnLongPress(gesture: UILongPressGestureRecognizer) {
         
+        //Remove All Time and Distance Information
+        self.timeBox.image = nil
+        self.distanceBox.image = nil
+        self.timeLabel.text = nil
+        self.distanceLabel.text = nil
+        self.timeSubLabel.text = nil
+        self.distanceSubLevel.text = nil
+        
         //Remove Map Overlays
         let overlays = myMap.overlays
         myMap.removeOverlays(overlays)
@@ -140,7 +148,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             //Allow To Calculate
             self.calculate.isEnabled = true
-            
         }
     }
     
@@ -374,7 +381,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if (pointAnnotation != nil) {
             myMap.removeAnnotation(pointAnnotation)
         }
-        
+  
         //Remove All Time and Distance Information
         self.timeBox.image = nil
         self.distanceBox.image = nil
