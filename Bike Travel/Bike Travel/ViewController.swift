@@ -26,6 +26,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var windLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
+    @IBOutlet weak var calculate: UIBarButtonItem!
     @IBOutlet var arrowImage: UIImageView!
     @IBOutlet var windBackground: UIImageView!
     
@@ -64,6 +65,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myMap.delegate = self
+        
+        //Make Calculate Route Button Un-Clickable 
+        self.calculate.isEnabled = false
         
         //Make Arrow Image Invisible
         self.arrowImage.image = nil
@@ -273,39 +277,40 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                             self.directionLabel.text = "NNW"
                             self.arrowImage.image = #imageLiteral(resourceName: "NNWarrow")
                         }
+                    
+                    
+                        //Color Palet
+                        let myGreenColor = UIColor(
+                            red:26.0/255.0,
+                            green:230.0/255.0,
+                            blue:23.0/255.0,
+                            alpha:1.0)
+                    
+                        let myYellowColor = UIColor(
+                            red:255.0/255.0,
+                            green:245.0/255.0,
+                            blue:0.0/255.0,
+                            alpha:1.0)
+                    
+                        let myRedColor = UIColor(
+                            red:255.0/255.0,
+                            green:0.0/255.0,
+                            blue:0.0/255.0,
+                            alpha:1.0)
+                    
+                        //Chaning Color Depending On Speed
+                        if (Double(self.speed)! < 8.0) {
+                            self.windLabel.textColor = myGreenColor
+                            self.directionLabel.textColor = myGreenColor
+                        } else if (Double(self.speed)! < 18.0) {
+                            self.windLabel.textColor = myYellowColor
+                            self.directionLabel.textColor = myYellowColor
+                        } else if (Double(self.speed)! > 20.0) {
+                            self.windLabel.textColor = myRedColor
+                            self.directionLabel.textColor = myRedColor
+                        }
                     }
                     
-                    //Color Palet
-                    let myGreenColor = UIColor(
-                        red:26.0/255.0,
-                        green:230.0/255.0,
-                        blue:23.0/255.0,
-                        alpha:1.0)
-                    
-                    let myYellowColor = UIColor(
-                        red:255.0/255.0,
-                        green:245.0/255.0,
-                        blue:0.0/255.0,
-                        alpha:1.0)
-                    
-                    let myRedColor = UIColor(
-                        red:255.0/255.0,
-                        green:0.0/255.0,
-                        blue:0.0/255.0,
-                        alpha:1.0)
-                    
-                    //Chaning Color Depending On Speed
-                    if (Double(self.speed)! < 8.0) {
-                        self.windLabel.textColor = myGreenColor
-                        self.directionLabel.textColor = myGreenColor
-                    } else if (Double(self.speed)! < 18.0) {
-                        self.windLabel.textColor = myYellowColor
-                        self.directionLabel.textColor = myYellowColor
-                    } else if (Double(self.speed)! > 20.0) {
-                        self.windLabel.textColor = myRedColor
-                        self.directionLabel.textColor = myRedColor
-                    }
-                                        
                 } catch let jsonError as NSError {
                     // Error occurred while trying to convert the data into a Swift dictionary.
                     
@@ -364,6 +369,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.myMap.addAnnotation(self.pinAnnotationView.annotation!)
         }
         self.view.endEditing(true)
+        self.calculate.isEnabled = true
     }
     
     /**

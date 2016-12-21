@@ -196,6 +196,7 @@
                     </view>
                     <connections>
                         <outlet property="arrowImage" destination="pOS-Kb-sBA" id="0vK-Ja-i2v"/>
+                        <outlet property="calculate" destination="2dD-xO-KBn" id="JkS-fJ-MMp"/>
                         <outlet property="directionLabel" destination="mgK-vk-IkM" id="MSz-wd-stQ"/>
                         <outlet property="distanceBox" destination="zBX-zl-7kf" id="c3R-8H-0oL"/>
                         <outlet property="distanceLabel" destination="zou-fT-KSE" id="Hq2-yX-x7J"/>
