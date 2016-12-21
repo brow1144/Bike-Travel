@@ -116,21 +116,31 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
      */
     func addAnnotationOnLongPress(gesture: UILongPressGestureRecognizer) {
         
+        //Remove Map Overlays
+        let overlays = myMap.overlays
+        myMap.removeOverlays(overlays)
+        
+        //Remove All Previous Map Annotations
+        if (pointAnnotation != nil) {
+            myMap.removeAnnotation(pointAnnotation)
+        }
+        
         if gesture.state == .ended {
             let point = gesture.location(in: self.myMap)
             let coordinate = self.myMap.convert(point, toCoordinateFrom: self.myMap)
-            print(coordinate)
-            //Now use this coordinate to add annotation on map.
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
+
+            //let annotation = MKPointAnnotation()
+            self.pointAnnotation = MKPointAnnotation()
+
+            self.pointAnnotation.coordinate = coordinate
             //Set title and subtitle if you want
-            annotation.title = "Title"
-            annotation.subtitle = "subtitle"
-            self.myMap.addAnnotation(annotation)
+            self.pointAnnotation.title = "Title"
+            self.pointAnnotation.subtitle = "subtitle"
+            self.myMap.addAnnotation(self.pointAnnotation)
             
-            if (annotation != nil) {
-                self.calculate.isEnabled = true
-            }
+            //Allow To Calculate
+            self.calculate.isEnabled = true
+            
         }
     }
     
