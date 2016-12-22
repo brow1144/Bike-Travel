@@ -428,8 +428,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBAction func calculateRoute(_ sender: Any) {
     
         //Set Map Region to User Location
-        myMap.setRegion(MKCoordinateRegionMake(myLocation, MKCoordinateSpanMake(0.03,0.03)), animated: true)
-        
+        myMap.setRegion(MKCoordinateRegionMake(myLocation, MKCoordinateSpanMake(0.08,0.08)), animated: true)
+       
+    
         //Call Directions from User Location to Uesr Inputed Location
         let directionsRequest = MKDirectionsRequest()
         let myLocationPlaceMark = MKPlacemark(coordinate: CLLocationCoordinate2DMake(myLocation.latitude, myLocation.longitude), addressDictionary: nil)
