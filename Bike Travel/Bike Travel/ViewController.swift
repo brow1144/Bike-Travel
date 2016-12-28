@@ -21,7 +21,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeSubLabel: UILabel!
     @IBOutlet weak var distanceSubLevel: UILabel!
-    @IBOutlet weak var timeBox: UIImageView!
+    //@IBOutlet weak var timeBox: UIImageView!
+    @IBOutlet weak var timeBoxButton: UIButton!
     @IBOutlet weak var distanceBox: UIImageView!
     @IBOutlet weak var speedLabel: UIBarButtonItem!
     @IBOutlet weak var slider: UISlider!
@@ -77,7 +78,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.slider.isEnabled = true
         
         //Make Time and Distance Box Invisible When Launched
-        self.timeBox.image = nil
+        self.timeBoxButton.setImage(nil, for: .normal)
         self.distanceBox.image = nil
         
         //Make Wind Box Invisible
@@ -118,7 +119,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func addAnnotationOnLongPress(gesture: UILongPressGestureRecognizer) {
         
         //Remove All Time and Distance Information
-        self.timeBox.image = nil
+        self.timeBoxButton.setImage(nil, for: .normal)
         self.distanceBox.image = nil
         self.timeLabel.text = nil
         self.distanceLabel.text = nil
@@ -369,7 +370,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // Resume
         dataTask.resume()
     }
- 
+  
     /**
      Called When user is Finished Typing and hits Route
      
@@ -384,7 +385,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
   
         //Remove All Time and Distance Information
-        self.timeBox.image = nil
+        self.timeBoxButton.setImage(nil, for: .normal)
         self.distanceBox.image = nil
         self.timeLabel.text = nil
         self.distanceLabel.text = nil
@@ -477,7 +478,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         self.timeSubLabel.text = ("\(minutes1Int)" + " Minutes")
                         self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
                         self.distanceSubLevel.text = "Distance"
-                        self.timeBox.image = UIImage( named : "ace" )
+                        self.timeBoxButton.setImage(#imageLiteral(resourceName: "ace"), for: .normal)
                         self.distanceBox.image = UIImage( named : "ace" )
                     }
                 } else {
@@ -505,7 +506,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
                         self.timeSubLabel.text = "Time"
                         self.distanceSubLevel.text = "Distance"
-                        self.timeBox.image = UIImage( named : "ace" )
+                        self.timeBoxButton.setImage(#imageLiteral(resourceName: "ace"), for: .normal)
                         self.distanceBox.image = UIImage( named : "ace" )
                     }
                 }
