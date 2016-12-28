@@ -75,7 +75,10 @@
                                     <constraint firstAttribute="height" constant="57" id="nAi-Rb-Mqf"/>
                                     <constraint firstAttribute="width" constant="163" id="s9z-84-Jji"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="ace"/>
+                                <state key="normal" image="ace"/>
+                                <connections>
+                                    <action selector="timeBoxButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OqU-0j-yhe"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ace" translatesAutoresizingMaskIntoConstraints="NO" id="zBX-zl-7kf">
                                 <rect key="frame" x="196" y="560" width="163" height="57"/>
@@ -207,7 +210,7 @@
                         <outlet property="searchBar" destination="Y86-2o-xB6" id="68f-qI-zF5"/>
                         <outlet property="slider" destination="ajM-1C-gD3" id="mzn-hT-RMW"/>
                         <outlet property="speedLabel" destination="scZ-pv-jCO" id="DtZ-32-ne4"/>
-                        <outlet property="timeBoxButton" destination="4tj-8M-gUi" id="hdw-YK-JyH"/>
+                        <outlet property="timeBoxButton" destination="4tj-8M-gUi" id="m9t-Cp-ece"/>
                         <outlet property="timeLabel" destination="voj-Wq-BoY" id="Oma-87-IYg"/>
                         <outlet property="timeSubLabel" destination="ymM-ew-kcf" id="Glq-IS-0Xw"/>
                         <outlet property="windBackground" destination="aJa-rV-4Qo" id="V28-8K-n2W"/>

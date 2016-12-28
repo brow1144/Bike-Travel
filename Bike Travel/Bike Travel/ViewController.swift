@@ -422,6 +422,18 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     /**
+     Action for when the Time Box Is Pressed
+     
+     - Parameter sender:   Access to the UIButton "Calculate Route"
+     
+     */
+    @IBAction func timeBoxButton(_ sender: UIButton) {
+        
+        
+        
+    }
+    
+    /**
      Action for when the Calculate Route Button is Pushed
      
      - Parameter sender:   Access to the UIButton "Calculate Route"
