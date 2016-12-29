@@ -54,6 +54,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var direction : String!
     var weatherRequestURL : NSURL!
     
+    //Time Variables 
+    var hours : String!
+    var minutes : String!
+    var seconds : String!
+    
     //Recieve Memory Warning Method
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -435,7 +440,35 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date as Date)
         let minutes = calendar.component(.minute, from: date as Date)
+     
+        var nonMilTime : String!
         
+        if (hour > 12) {
+            let nonMilitaryHour = (hour - 12)
+            nonMilTime = ("\(nonMilitaryHour)" + ":" + "\(minutes)")
+        } else {
+            nonMilTime = ("\(hour)" + ":" + "\(minutes)")
+        }
+        
+       
+        if (self.hours != nil) {
+            var x = hour + Int(self.hours)!
+            let y = minutes + Int(self.minutes)!
+            
+            if (x > 12) {
+                print("\(x - 12)" + ":" + "\(y)")
+            } else {
+                print("\(x)" + ":" + "\(y)")
+            }
+        } else {
+            var x = minutes + Int(self.minutes)!
+            if (hour > 12) {
+                print("\(hour - 12)" + ":" + "\(x)")
+
+            } else {
+                print("\(hour)" + ":" + "\(x)")
+            }
+        }
     }
     
     /**
@@ -493,6 +526,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
                         self.timeLabel.text = ("\(timeInHoursInt)" + " Hour(s)")
                         self.timeSubLabel.text = ("\(minutes1Int)" + " Minutes")
+                        self.hours = ("\(timeInHoursInt)")
+                        self.minutes = ("\(minutes1Int)")
                         self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
                         self.distanceSubLevel.text = "Distance"
                         self.timeBoxButton.setImage(#imageLiteral(resourceName: "ace"), for: .normal)
@@ -513,11 +548,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
                         if ( (secondsInt == 1) || (secondsInt == 2) || (secondsInt == 3) || (secondsInt == 4) || (secondsInt == 5) || (secondsInt == 6) ) {
                             self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + "0 Minutes")
+                            self.minutes = ("\(minutes2Int)")
+                            self.seconds = ("\(secondsInt)")
                         } else if ( (secondsInt == 7) || (secondsInt == 8) || (secondsInt == 9)) {
                             self.timeLabel.text = ("\(minutes2Int)" + ":" + "00 Minutes")
-
+                            self.minutes = ("\(minutes2Int)")
+                            self.seconds = ("00")
                         } else {
                             self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + " Minutes")
+                            self.minutes = ("\(minutes2Int)")
+                            self.seconds = ("\(secondsInt)")
                         }
                     
                         self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
