@@ -440,19 +440,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date as Date)
         let minutes = calendar.component(.minute, from: date as Date)
-     
-        var nonMilTime : String!
         
-        if (hour > 12) {
-            let nonMilitaryHour = (hour - 12)
-            nonMilTime = ("\(nonMilitaryHour)" + ":" + "\(minutes)")
-        } else {
-            nonMilTime = ("\(hour)" + ":" + "\(minutes)")
-        }
-        
-       
         if (self.hours != nil) {
-            var x = hour + Int(self.hours)!
+            let x = hour + Int(self.hours)!
             let y = minutes + Int(self.minutes)!
             
             if (x > 12) {
@@ -461,7 +451,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 print("\(x)" + ":" + "\(y)")
             }
         } else {
-            var x = minutes + Int(self.minutes)!
+            let x = minutes + Int(self.minutes)!
             if (hour > 12) {
                 print("\(hour - 12)" + ":" + "\(x)")
 
