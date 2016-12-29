@@ -429,7 +429,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
      */
     @IBAction func timeBoxButton(_ sender: UIButton) {
         
-        
+        //Hour in 24-Hour Time
+        //Minutes as Normal
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date as Date)
+        let minutes = calendar.component(.minute, from: date as Date)
         
     }
     
