@@ -777,7 +777,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         }
                     
                         self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
-                        self.timeSubLabel.text = "Time"
+                        self.timeSubLabel.text = "Push For Arrival Time"
                         self.distanceSubLevel.text = "Distance"
                         self.timeBoxButton.setImage(#imageLiteral(resourceName: "ace"), for: .normal)
                         self.distanceBox.image = UIImage( named : "ace" )
