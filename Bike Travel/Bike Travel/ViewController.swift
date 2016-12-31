@@ -21,7 +21,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeSubLabel: UILabel!
     @IBOutlet weak var distanceSubLevel: UILabel!
-    //@IBOutlet weak var timeBox: UIImageView!
     @IBOutlet weak var timeBoxButton: UIButton!
     @IBOutlet weak var distanceBox: UIImageView!
     @IBOutlet weak var speedLabel: UIBarButtonItem!
@@ -440,6 +439,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let calendar = Calendar.current
         var hour = calendar.component(.hour, from: date as Date)
         let minutes = calendar.component(.minute, from: date as Date)
+        let timeOfDay = calendar.component(.era, from: date as Date)
+        
+        let y : String
+        
+        if (timeOfDay == 1) {
+            y = "PM"
+        } else {
+            y = "AM"
+        }
         
         //If Time Data is in Hours ( Long Distnace )
         if (self.hours != nil) {
@@ -493,7 +501,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     x = "00"
                 }
                 
-                print("\(newHour + 1)" + ":" + "\(x)")
+                if (newHour > 12) {
+                    self.timeLabel.text = ("\((newHour + 1) - 12)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                } else {
+                    self.timeLabel.text = ("\(newHour + 1)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                }
                 
             } else {
                 
@@ -540,7 +554,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     x = "00"
                 }
 
-                print("\(newHour)" + ":" + "\(x)")
+                if (newHour > 12) {
+                    self.timeLabel.text = ("\(newHour - 12)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                } else {
+                    self.timeLabel.text = ("\(newHour)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                }
             }
             
             
@@ -596,7 +616,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     x = "00"
                 }
                 
-                print("\(hour + hoursPlus)" + ":" + "\(x)")
+                if (hour > 12) {
+                    self.timeLabel.text = ("\((hour + hoursPlus) - 12)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                } else {
+                    self.timeLabel.text = ("\(hour + hoursPlus)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                }
             }
                 
             //If newMinutes Are Less Than 60
@@ -644,7 +670,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     hour += 1
                     x = "00"
                 }
-                print("\(hour)" + ":" + "\(x)")
+                
+                if (hour > 12) {
+                    self.timeLabel.text = ("\(hour - 12)" + ":" + "\(x)" + " " +  "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                } else {
+                    self.timeLabel.text = ("\(hour)" + ":" + "\(x)" + " " + "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                }
             }
         }
     }
