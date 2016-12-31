@@ -443,6 +443,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         let y : String
         
+        //Deciding AM or PM
         if (timeOfDay == 1) {
             y = "PM"
         } else {
@@ -501,6 +502,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     x = "00"
                 }
                 
+                //Chagne Time Box
                 if (newHour > 12) {
                     self.timeLabel.text = ("\((newHour + 1) - 12)" + ":" + "\(x)" + " " +   "\(y)")
                     self.timeSubLabel.text = "Arrival Time"
@@ -554,6 +556,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     x = "00"
                 }
 
+                //Chagne Time Box
                 if (newHour > 12) {
                     self.timeLabel.text = ("\(newHour - 12)" + ":" + "\(x)" + " " +   "\(y)")
                     self.timeSubLabel.text = "Arrival Time"
@@ -616,6 +619,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     x = "00"
                 }
                 
+                //Chagne Time Box
                 if (hour > 12) {
                     self.timeLabel.text = ("\((hour + hoursPlus) - 12)" + ":" + "\(x)" + " " +   "\(y)")
                     self.timeSubLabel.text = "Arrival Time"
@@ -671,6 +675,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     x = "00"
                 }
                 
+                //Chagne Time Box
                 if (hour > 12) {
                     self.timeLabel.text = ("\(hour - 12)" + ":" + "\(x)" + " " +  "\(y)")
                     self.timeSubLabel.text = "Arrival Time"
