@@ -438,15 +438,110 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //Minutes as Normal
         let date = Date()
         let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date as Date)
+        var hour = calendar.component(.hour, from: date as Date)
         let minutes = calendar.component(.minute, from: date as Date)
         
         //If Time Data is in Hours ( Long Distnace )
         if (self.hours != nil) {
             let newHour = hour + Int(self.hours)!
             let newMinutes = minutes + Int(self.minutes)!
-        
-            print("\(newHour)" + ":" + "\(newMinutes)")
+            
+            if (newMinutes > 60) {
+                
+                let leftOver = newMinutes % 60
+                
+                var x : String = "\(leftOver)"
+                
+                if (leftOver == 1) {
+                    x = "\(leftOver)"
+                    x = "01"
+                }
+                if (leftOver == 2) {
+                    x = "\(newMinutes)"
+                    x = "02"
+                }
+                if (leftOver == 3) {
+                    x = "\(leftOver)"
+                    x = "03"
+                }
+                if (leftOver == 4) {
+                    x = "\(leftOver)"
+                    x = "04"
+                }
+                if (leftOver == 5) {
+                    x = "\(leftOver)"
+                    x = "05"
+                }
+                if (leftOver == 6) {
+                    x = "\(leftOver)"
+                    x = "06"
+                }
+                if (leftOver == 7) {
+                    x = "\(leftOver)"
+                    x = "07"
+                }
+                if (leftOver == 8) {
+                    x = "\(leftOver)"
+                    x = "08"
+                }
+                if (leftOver == 9) {
+                    x = "\(leftOver)"
+                    x = "09"
+                }
+                if (leftOver == 60) {
+                    //hour += 1
+                    x = "00"
+                }
+                
+                print("\(newHour + 1)" + ":" + "\(x)")
+                
+            } else {
+                
+                var x : String = "\(newMinutes)"
+                
+                if (newMinutes == 1) {
+                    x = "\(newMinutes)"
+                    x = "01"
+                }
+                if (newMinutes == 2) {
+                    x = "\(newMinutes)"
+                    x = "02"
+                }
+                if (newMinutes == 3) {
+                    x = "\(newMinutes)"
+                    x = "03"
+                }
+                if (newMinutes == 4) {
+                    x = "\(newMinutes)"
+                    x = "04"
+                }
+                if (newMinutes == 5) {
+                    x = "\(newMinutes)"
+                    x = "05"
+                }
+                if (newMinutes == 6) {
+                    x = "\(newMinutes)"
+                    x = "06"
+                }
+                if (newMinutes == 7) {
+                    x = "\(newMinutes)"
+                    x = "07"
+                }
+                if (newMinutes == 8) {
+                    x = "\(newMinutes)"
+                    x = "08"
+                }
+                if (newMinutes == 9) {
+                    x = "\(newMinutes)"
+                    x = "09"
+                }
+                if (newMinutes == 60) {
+                    hour += 1
+                    x = "00"
+                }
+
+                print("\(newHour)" + ":" + "\(x)")
+            }
             
             
         //If Time Data is in Minutes ( Short Distnace )
@@ -496,6 +591,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     x = "\(leftOver)"
                     x = "09"
                 }
+                if (leftOver == 60) {
+                    hour += 1
+                    x = "00"
+                }
                 
                 print("\(hour + hoursPlus)" + ":" + "\(x)")
             }
@@ -540,6 +639,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 if (newMinutes == 9) {
                     x = "\(newMinutes)"
                     x = "09"
+                }
+                if (newMinutes == 60) {
+                    hour += 1
+                    x = "00"
                 }
                 print("\(hour)" + ":" + "\(x)")
             }
