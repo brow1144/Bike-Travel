@@ -442,21 +442,20 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let minutes = calendar.component(.minute, from: date as Date)
         
         if (self.hours != nil) {
-            let x = hour + Int(self.hours)!
-            let y = minutes + Int(self.minutes)!
+            let newHour = hour + Int(self.hours)!
+            let newMinutes = minutes + Int(self.minutes)!
             
-            if (x > 12) {
-                print("\(x - 12)" + ":" + "\(y)")
+            if (newHour > 12) {
+                print("\(newHour)" + ":" + "\(newMinutes)")
             } else {
-                print("\(x)" + ":" + "\(y)")
+                print("\(newHour)" + ":" + "\(newMinutes)")
             }
         } else {
-            let x = minutes + Int(self.minutes)!
+            let newMinutes = minutes + Int(self.minutes)!
             if (hour > 12) {
-                print("\(hour - 12)" + ":" + "\(x)")
-
+                print("\(hour)" + ":" + "\(newMinutes)")
             } else {
-                print("\(hour)" + ":" + "\(x)")
+                print("\(hour)" + ":" + "\(newMinutes)")
             }
         }
     }
