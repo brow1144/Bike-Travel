@@ -441,6 +441,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let hour = calendar.component(.hour, from: date as Date)
         let minutes = calendar.component(.minute, from: date as Date)
         
+        //If Time Data is in Minutes ( Short Distances )
         if (self.hours != nil) {
             let newHour = hour + Int(self.hours)!
             let newMinutes = minutes + Int(self.minutes)!
@@ -450,6 +451,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             } else {
                 print("\(newHour)" + ":" + "\(newMinutes)")
             }
+        
+        //           Todo
+        //Work On After Mintues Are Working
+        //If Time Data is in Hours ( Long Distnace)
         } else {
             let newMinutes = minutes + Int(self.minutes)!
             if (hour > 12) {
