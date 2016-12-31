@@ -2,6 +2,7 @@
 //  ViewController.siwft
 //  Bike Travel
 //
+//
 //  Created by Kyle Brown on 12/3/16.
 //  Copyright © 2016 Kyle Brown. All rights reserved.
 //
@@ -20,7 +21,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeSubLabel: UILabel!
     @IBOutlet weak var distanceSubLevel: UILabel!
-    @IBOutlet weak var timeBox: UIImageView!
+    @IBOutlet weak var timeBoxButton: UIButton!
     @IBOutlet weak var distanceBox: UIImageView!
     @IBOutlet weak var speedLabel: UIBarButtonItem!
     @IBOutlet weak var slider: UISlider!
@@ -52,6 +53,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var direction : String!
     var weatherRequestURL : NSURL!
     
+    //Time Variables 
+    var hours : String!
+    var minutes : String!
+    var seconds : String!
+    
     //Recieve Memory Warning Method
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -76,7 +82,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.slider.isEnabled = true
         
         //Make Time and Distance Box Invisible When Launched
-        self.timeBox.image = nil
+        self.timeBoxButton.setImage(nil, for: .normal)
         self.distanceBox.image = nil
         
         //Make Wind Box Invisible
@@ -117,7 +123,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func addAnnotationOnLongPress(gesture: UILongPressGestureRecognizer) {
         
         //Remove All Time and Distance Information
-        self.timeBox.image = nil
+        self.timeBoxButton.setImage(nil, for: .normal)
         self.distanceBox.image = nil
         self.timeLabel.text = nil
         self.distanceLabel.text = nil
@@ -368,7 +374,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // Resume
         dataTask.resume()
     }
- 
+  
     /**
      Called When user is Finished Typing and hits Route
      
@@ -383,7 +389,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
   
         //Remove All Time and Distance Information
-        self.timeBox.image = nil
+        self.timeBoxButton.setImage(nil, for: .normal)
         self.distanceBox.image = nil
         self.timeLabel.text = nil
         self.distanceLabel.text = nil
@@ -417,6 +423,268 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         self.view.endEditing(true)
         self.calculate.isEnabled = true
+    }
+    
+    /**
+     Action for when the Time Box Is Pressed
+     
+     - Parameter sender:   Access to the UIButton "Calculate Route"
+     
+     */
+    @IBAction func timeBoxButton(_ sender: UIButton) {
+        
+        //Hour in 24-Hour Time
+        //Minutes as Normal
+        let date = Date()
+        let calendar = Calendar.current
+        var hour = calendar.component(.hour, from: date as Date)
+        let minutes = calendar.component(.minute, from: date as Date)
+        let timeOfDay = calendar.component(.era, from: date as Date)
+        
+        let y : String
+        
+        //Deciding AM or PM
+        if (timeOfDay == 1) {
+            y = "PM"
+        } else {
+            y = "AM"
+        }
+        
+        //If Time Data is in Hours ( Long Distnace )
+        if (self.hours != nil) {
+            let newHour = hour + Int(self.hours)!
+            let newMinutes = minutes + Int(self.minutes)!
+            
+            if (newMinutes > 60) {
+                
+                let leftOver = newMinutes % 60
+                
+                var x : String = "\(leftOver)"
+                
+                if (leftOver == 1) {
+                    x = "\(leftOver)"
+                    x = "01"
+                }
+                if (leftOver == 2) {
+                    x = "\(newMinutes)"
+                    x = "02"
+                }
+                if (leftOver == 3) {
+                    x = "\(leftOver)"
+                    x = "03"
+                }
+                if (leftOver == 4) {
+                    x = "\(leftOver)"
+                    x = "04"
+                }
+                if (leftOver == 5) {
+                    x = "\(leftOver)"
+                    x = "05"
+                }
+                if (leftOver == 6) {
+                    x = "\(leftOver)"
+                    x = "06"
+                }
+                if (leftOver == 7) {
+                    x = "\(leftOver)"
+                    x = "07"
+                }
+                if (leftOver == 8) {
+                    x = "\(leftOver)"
+                    x = "08"
+                }
+                if (leftOver == 9) {
+                    x = "\(leftOver)"
+                    x = "09"
+                }
+                if (leftOver == 60) {
+                    //hour += 1
+                    x = "00"
+                }
+                
+                //Chagne Time Box
+                if (newHour > 12) {
+                    self.timeLabel.text = ("\((newHour + 1) - 12)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                } else {
+                    self.timeLabel.text = ("\(newHour + 1)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                }
+                
+            } else {
+                
+                var x : String = "\(newMinutes)"
+                
+                if (newMinutes == 1) {
+                    x = "\(newMinutes)"
+                    x = "01"
+                }
+                if (newMinutes == 2) {
+                    x = "\(newMinutes)"
+                    x = "02"
+                }
+                if (newMinutes == 3) {
+                    x = "\(newMinutes)"
+                    x = "03"
+                }
+                if (newMinutes == 4) {
+                    x = "\(newMinutes)"
+                    x = "04"
+                }
+                if (newMinutes == 5) {
+                    x = "\(newMinutes)"
+                    x = "05"
+                }
+                if (newMinutes == 6) {
+                    x = "\(newMinutes)"
+                    x = "06"
+                }
+                if (newMinutes == 7) {
+                    x = "\(newMinutes)"
+                    x = "07"
+                }
+                if (newMinutes == 8) {
+                    x = "\(newMinutes)"
+                    x = "08"
+                }
+                if (newMinutes == 9) {
+                    x = "\(newMinutes)"
+                    x = "09"
+                }
+                if (newMinutes == 60) {
+                    hour += 1
+                    x = "00"
+                }
+
+                //Chagne Time Box
+                if (newHour > 12) {
+                    self.timeLabel.text = ("\(newHour - 12)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                } else {
+                    self.timeLabel.text = ("\(newHour)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                }
+            }
+            
+            
+        //If Time Data is in Minutes ( Short Distnace )
+        } else {
+            let newMinutes = minutes + Int(self.minutes)!
+            
+            //If newMinutes Is Greater Than 60
+            if (newMinutes > 60) {
+                let leftOver = newMinutes % 60
+                let hoursPlus = newMinutes / 60
+                
+                var x : String = "\(leftOver)"
+                
+                if (leftOver == 1) {
+                    x = "\(leftOver)"
+                    x = "01"
+                }
+                if (leftOver == 2) {
+                    x = "\(newMinutes)"
+                    x = "02"
+                }
+                if (leftOver == 3) {
+                    x = "\(leftOver)"
+                    x = "03"
+                }
+                if (leftOver == 4) {
+                    x = "\(leftOver)"
+                    x = "04"
+                }
+                if (leftOver == 5) {
+                    x = "\(leftOver)"
+                    x = "05"
+                }
+                if (leftOver == 6) {
+                    x = "\(leftOver)"
+                    x = "06"
+                }
+                if (leftOver == 7) {
+                    x = "\(leftOver)"
+                    x = "07"
+                }
+                if (leftOver == 8) {
+                    x = "\(leftOver)"
+                    x = "08"
+                }
+                if (leftOver == 9) {
+                    x = "\(leftOver)"
+                    x = "09"
+                }
+                if (leftOver == 60) {
+                    hour += 1
+                    x = "00"
+                }
+                
+                //Chagne Time Box
+                if (hour > 12) {
+                    self.timeLabel.text = ("\((hour + hoursPlus) - 12)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                } else {
+                    self.timeLabel.text = ("\(hour + hoursPlus)" + ":" + "\(x)" + " " +   "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                }
+            }
+                
+            //If newMinutes Are Less Than 60
+            else {
+                
+                var x : String = "\(newMinutes)"
+
+                if (newMinutes == 1) {
+                    x = "\(newMinutes)"
+                    x = "01"
+                }
+                if (newMinutes == 2) {
+                    x = "\(newMinutes)"
+                    x = "02"
+                }
+                if (newMinutes == 3) {
+                    x = "\(newMinutes)"
+                    x = "03"
+                }
+                if (newMinutes == 4) {
+                    x = "\(newMinutes)"
+                    x = "04"
+                }
+                if (newMinutes == 5) {
+                    x = "\(newMinutes)"
+                    x = "05"
+                }
+                if (newMinutes == 6) {
+                    x = "\(newMinutes)"
+                    x = "06"
+                }
+                if (newMinutes == 7) {
+                    x = "\(newMinutes)"
+                    x = "07"
+                }
+                if (newMinutes == 8) {
+                    x = "\(newMinutes)"
+                    x = "08"
+                }
+                if (newMinutes == 9) {
+                    x = "\(newMinutes)"
+                    x = "09"
+                }
+                if (newMinutes == 60) {
+                    hour += 1
+                    x = "00"
+                }
+                
+                //Chagne Time Box
+                if (hour > 12) {
+                    self.timeLabel.text = ("\(hour - 12)" + ":" + "\(x)" + " " +  "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                } else {
+                    self.timeLabel.text = ("\(hour)" + ":" + "\(x)" + " " + "\(y)")
+                    self.timeSubLabel.text = "Arrival Time"
+                }
+            }
+        }
     }
     
     /**
@@ -474,9 +742,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
                         self.timeLabel.text = ("\(timeInHoursInt)" + " Hour(s)")
                         self.timeSubLabel.text = ("\(minutes1Int)" + " Minutes")
+                        self.hours = ("\(timeInHoursInt)")
+                        self.minutes = ("\(minutes1Int)")
                         self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
                         self.distanceSubLevel.text = "Distance"
-                        self.timeBox.image = UIImage( named : "ace" )
+                        self.timeBoxButton.setImage(#imageLiteral(resourceName: "ace"), for: .normal)
                         self.distanceBox.image = UIImage( named : "ace" )
                     }
                 } else {
@@ -494,17 +764,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
                         if ( (secondsInt == 1) || (secondsInt == 2) || (secondsInt == 3) || (secondsInt == 4) || (secondsInt == 5) || (secondsInt == 6) ) {
                             self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + "0 Minutes")
+                            self.minutes = ("\(minutes2Int)")
+                            self.seconds = ("\(secondsInt)")
                         } else if ( (secondsInt == 7) || (secondsInt == 8) || (secondsInt == 9)) {
                             self.timeLabel.text = ("\(minutes2Int)" + ":" + "00 Minutes")
-
+                            self.minutes = ("\(minutes2Int)")
+                            self.seconds = ("00")
                         } else {
                             self.timeLabel.text = ("\(minutes2Int)" + ":" + "\(secondsInt)" + " Minutes")
+                            self.minutes = ("\(minutes2Int)")
+                            self.seconds = ("\(secondsInt)")
                         }
                     
                         self.distanceLabel.text = ("\(distanceMilesTwoDec)" + " Miles")
                         self.timeSubLabel.text = "Time"
                         self.distanceSubLevel.text = "Distance"
-                        self.timeBox.image = UIImage( named : "ace" )
+                        self.timeBoxButton.setImage(#imageLiteral(resourceName: "ace"), for: .normal)
                         self.distanceBox.image = UIImage( named : "ace" )
                     }
                 }
