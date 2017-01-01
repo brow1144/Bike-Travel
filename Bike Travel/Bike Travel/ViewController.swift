@@ -444,6 +444,58 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     /**
+    Action for when the Time Box Is Pressed
+    
+    - Parameter sender:   Access to the UIButton "Calculate Route"
+    
+    */
+    private func errorFixing(value: Int, newMinutes : Double ) -> String {
+        
+        var x : String = "\(value)"
+        
+        if (value == 1) {
+            x = "\(value)"
+            x = "01"
+        }
+        if (value == 2) {
+            x = "\(value)"
+            x = "02"
+        }
+        if (value == 3) {
+            x = "\(value)"
+            x = "03"
+        }
+        if (value == 4) {
+            x = "\(value)"
+            x = "04"
+        }
+        if (value == 5) {
+            x = "\(value)"
+            x = "05"
+        }
+        if (value == 6) {
+            x = "\(value)"
+            x = "06"
+        }
+        if (value == 7) {
+            x = "\(value)"
+            x = "07"
+        }
+        if (value == 8) {
+            x = "\(value)"
+            x = "08"
+        }
+        if (value == 9) {
+            x = "\(value)"
+            x = "09"
+        }
+        if (value == 60) {
+            x = "00"
+        }
+        return x
+    }
+    
+    /**
      Action for when the Time Box Is Pressed
      
      - Parameter sender:   Access to the UIButton "Calculate Route"
@@ -477,48 +529,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 
                 let leftOver = newMinutes % 60
                 
-                var x : String = "\(leftOver)"
-                
-                if (leftOver == 1) {
-                    x = "\(leftOver)"
-                    x = "01"
-                }
-                if (leftOver == 2) {
-                    x = "\(newMinutes)"
-                    x = "02"
-                }
-                if (leftOver == 3) {
-                    x = "\(leftOver)"
-                    x = "03"
-                }
-                if (leftOver == 4) {
-                    x = "\(leftOver)"
-                    x = "04"
-                }
-                if (leftOver == 5) {
-                    x = "\(leftOver)"
-                    x = "05"
-                }
-                if (leftOver == 6) {
-                    x = "\(leftOver)"
-                    x = "06"
-                }
-                if (leftOver == 7) {
-                    x = "\(leftOver)"
-                    x = "07"
-                }
-                if (leftOver == 8) {
-                    x = "\(leftOver)"
-                    x = "08"
-                }
-                if (leftOver == 9) {
-                    x = "\(leftOver)"
-                    x = "09"
-                }
-                if (leftOver == 60) {
-                    //hour += 1
-                    x = "00"
-                }
+                let x = errorFixing(value: leftOver, newMinutes: Double(newMinutes))
                 
                 //Chagne Time Box
                 if (newHour > 12) {
@@ -531,48 +542,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 
             } else {
                 
-                var x : String = "\(newMinutes)"
+                let x = errorFixing(value: newHour, newMinutes: Double(newMinutes))
                 
-                if (newMinutes == 1) {
-                    x = "\(newMinutes)"
-                    x = "01"
-                }
-                if (newMinutes == 2) {
-                    x = "\(newMinutes)"
-                    x = "02"
-                }
-                if (newMinutes == 3) {
-                    x = "\(newMinutes)"
-                    x = "03"
-                }
-                if (newMinutes == 4) {
-                    x = "\(newMinutes)"
-                    x = "04"
-                }
-                if (newMinutes == 5) {
-                    x = "\(newMinutes)"
-                    x = "05"
-                }
-                if (newMinutes == 6) {
-                    x = "\(newMinutes)"
-                    x = "06"
-                }
-                if (newMinutes == 7) {
-                    x = "\(newMinutes)"
-                    x = "07"
-                }
-                if (newMinutes == 8) {
-                    x = "\(newMinutes)"
-                    x = "08"
-                }
-                if (newMinutes == 9) {
-                    x = "\(newMinutes)"
-                    x = "09"
-                }
-                if (newMinutes == 60) {
-                    hour += 1
-                    x = "00"
-                }
+                hour += 1
+
 
                 //Chagne Time Box
                 if (newHour > 12) {
@@ -594,48 +567,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 let leftOver = newMinutes % 60
                 let hoursPlus = newMinutes / 60
                 
-                var x : String = "\(leftOver)"
-                
-                if (leftOver == 1) {
-                    x = "\(leftOver)"
-                    x = "01"
-                }
-                if (leftOver == 2) {
-                    x = "\(newMinutes)"
-                    x = "02"
-                }
-                if (leftOver == 3) {
-                    x = "\(leftOver)"
-                    x = "03"
-                }
-                if (leftOver == 4) {
-                    x = "\(leftOver)"
-                    x = "04"
-                }
-                if (leftOver == 5) {
-                    x = "\(leftOver)"
-                    x = "05"
-                }
-                if (leftOver == 6) {
-                    x = "\(leftOver)"
-                    x = "06"
-                }
-                if (leftOver == 7) {
-                    x = "\(leftOver)"
-                    x = "07"
-                }
-                if (leftOver == 8) {
-                    x = "\(leftOver)"
-                    x = "08"
-                }
-                if (leftOver == 9) {
-                    x = "\(leftOver)"
-                    x = "09"
-                }
-                if (leftOver == 60) {
-                    hour += 1
-                    x = "00"
-                }
+                let x = errorFixing(value: leftOver, newMinutes: Double(newMinutes))
                 
                 //Chagne Time Box
                 if (hour > 12) {
@@ -650,48 +582,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             //If newMinutes Are Less Than 60
             else {
                 
-                var x : String = "\(newMinutes)"
-
-                if (newMinutes == 1) {
-                    x = "\(newMinutes)"
-                    x = "01"
-                }
-                if (newMinutes == 2) {
-                    x = "\(newMinutes)"
-                    x = "02"
-                }
-                if (newMinutes == 3) {
-                    x = "\(newMinutes)"
-                    x = "03"
-                }
-                if (newMinutes == 4) {
-                    x = "\(newMinutes)"
-                    x = "04"
-                }
-                if (newMinutes == 5) {
-                    x = "\(newMinutes)"
-                    x = "05"
-                }
-                if (newMinutes == 6) {
-                    x = "\(newMinutes)"
-                    x = "06"
-                }
-                if (newMinutes == 7) {
-                    x = "\(newMinutes)"
-                    x = "07"
-                }
-                if (newMinutes == 8) {
-                    x = "\(newMinutes)"
-                    x = "08"
-                }
-                if (newMinutes == 9) {
-                    x = "\(newMinutes)"
-                    x = "09"
-                }
-                if (newMinutes == 60) {
-                    hour += 1
-                    x = "00"
-                }
+                let x = errorFixing(value: newMinutes, newMinutes: Double(newMinutes))
                 
                 //Chagne Time Box
                 if (hour > 12) {
