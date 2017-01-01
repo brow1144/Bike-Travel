@@ -93,27 +93,35 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-        
-        
-        //User Notifications Set-Up
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
-        
-        //User Notifications
-        let content = UNMutableNotificationContent()
-        content.title = "It's been a while!"
-        content.subtitle = "Wana go for a bike ride?"
-        content.body = "Switch over to Bike Travel to get the most accurate bike travel time and current speed while on the bike ride!"
-        content.badge = 1
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
-        let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
+      
+        notifications()
+      
         //Long Press Set-Up
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
         longPressGesture.minimumPressDuration = 0.5
         self.myMap.addGestureRecognizer(longPressGesture)
     }
+  
+  /**
+   Setting Up User Notifications
+   
+   */
+  func notifications() {
     
+    //User Notifications Set-Up
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
+    
+    //User Notifications
+    let content = UNMutableNotificationContent()
+    content.title = "It's been a while!"
+    content.subtitle = "Wana go for a bike ride?"
+    content.body = "Switch over to Bike Travel to get the most accurate bike travel time and current speed while on the bike ride!"
+    content.badge = 1
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
+    let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
+    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+  }
+  
     /**
      Finding User Location
      
