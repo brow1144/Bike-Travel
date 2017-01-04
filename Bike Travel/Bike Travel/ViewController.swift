@@ -297,89 +297,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     DispatchQueue.main.async {
                         self.windBackground.image = #imageLiteral(resourceName: "ace")
                         self.windLabel.text = String(describing: speedTwo) + " mph"
-                        
-                        //Takes Direction Degrees and Changes to Direction Symbol
-                        //Also Adds An Arrow To The Top Right To Show Direction
-                        if (Double(self.direction)! > 348.75 || Double(self.direction)! < 11.25) {
-                            self.directionLabel.text = "N"
-                            self.arrowImage.image = #imageLiteral(resourceName: "Narrow")
-                        } else if (Double(self.direction)! >= 11.25 && Double(self.direction)! < 33.75) {
-                            self.directionLabel.text = "NNE"
-                            self.arrowImage.image = #imageLiteral(resourceName: "NNEarrow")
-                        } else if (Double(self.direction)! >= 33.75 && Double(self.direction)! < 56.25) {
-                            self.directionLabel.text = "NE"
-                            self.arrowImage.image = #imageLiteral(resourceName: "NEarrow")
-                        } else if (Double(self.direction)! >= 56.25 && Double(self.direction)! < 78.75) {
-                            self.directionLabel.text = "ENE"
-                            self.arrowImage.image = #imageLiteral(resourceName: "ENEarrow")
-                        } else if (Double(self.direction)! >= 78.75 && Double(self.direction)! < 101.25) {
-                            self.directionLabel.text = "E"
-                            self.arrowImage.image = #imageLiteral(resourceName: "Earrow")
-                        } else if (Double(self.direction)! >= 101.25 && Double(self.direction)! < 123.75) {
-                            self.directionLabel.text = "ESE"
-                            self.arrowImage.image = #imageLiteral(resourceName: "ESEarrow")
-                        } else if (Double(self.direction)! >= 123.75 && Double(self.direction)! < 146.25) {
-                            self.directionLabel.text = "SE"
-                            self.arrowImage.image = #imageLiteral(resourceName: "SEarrow")
-                        } else if (Double(self.direction)! >= 146.25 && Double(self.direction)! < 168.75) {
-                            self.directionLabel.text = "SSE"
-                            self.arrowImage.image = #imageLiteral(resourceName: "SSEarrow")
-                        } else if (Double(self.direction)! >= 168.75 && Double(self.direction)! < 191.25) {
-                            self.directionLabel.text = "S"
-                            self.arrowImage.image = #imageLiteral(resourceName: "Sarrow")
-                        } else if (Double(self.direction)! >= 191.25 && Double(self.direction)! < 213.75) {
-                            self.directionLabel.text = "SSW"
-                            self.arrowImage.image = #imageLiteral(resourceName: "SSWarrow")
-                        } else if (Double(self.direction)! >= 213.75 && Double(self.direction)! < 236.75) {
-                            self.directionLabel.text = "SW"
-                            self.arrowImage.image = #imageLiteral(resourceName: "SWarrow")
-                        } else if (Double(self.direction)! >= 236.75 && Double(self.direction)! < 258.75) {
-                            self.directionLabel.text = "WSW"
-                            self.arrowImage.image = #imageLiteral(resourceName: "WSWarrow")
-                        } else if (Double(self.direction)! >= 258.75 && Double(self.direction)! < 281.25) {
-                            self.directionLabel.text = "W"
-                            self.arrowImage.image = #imageLiteral(resourceName: "Warrow")
-                        } else if (Double(self.direction)! >= 281.25 && Double(self.direction)! < 303.75) {
-                            self.directionLabel.text = "WNW"
-                            self.arrowImage.image = #imageLiteral(resourceName: "WNWarrow")
-                        } else if (Double(self.direction)! >= 303.75 && Double(self.direction)! < 326.25) {
-                            self.directionLabel.text = "NW"
-                            self.arrowImage.image = #imageLiteral(resourceName: "NWarrow")
-                        } else if (Double(self.direction)! >= 326.25 && Double(self.direction)! < 348.75) {
-                            self.directionLabel.text = "NNW"
-                            self.arrowImage.image = #imageLiteral(resourceName: "NNWarrow")
-                        }
+                            
+                        self.setWindArrow(direction: self.direction)
                     
-                        //Color Palet
-                        let myGreenColor = UIColor(
-                            red:26.0/255.0,
-                            green:230.0/255.0,
-                            blue:23.0/255.0,
-                            alpha:1.0)
-                    
-                        let myYellowColor = UIColor(
-                            red:255.0/255.0,
-                            green:245.0/255.0,
-                            blue:0.0/255.0,
-                            alpha:1.0)
-                    
-                        let myRedColor = UIColor(
-                            red:255.0/255.0,
-                            green:0.0/255.0,
-                            blue:0.0/255.0,
-                            alpha:1.0)
-                    
-                        //Chaning Color Depending On Speed
-                        if (Double(self.speed)! < 8.0) {
-                            self.windLabel.textColor = myGreenColor
-                            self.directionLabel.textColor = myGreenColor
-                        } else if (Double(self.speed)! < 18.0) {
-                            self.windLabel.textColor = myYellowColor
-                            self.directionLabel.textColor = myYellowColor
-                        } else if (Double(self.speed)! > 20.0) {
-                            self.windLabel.textColor = myRedColor
-                            self.directionLabel.textColor = myRedColor
-                        }
+                        self.setWindDataColor(speed: self.speed)
                     }
                     
                 } catch let jsonError as NSError {
@@ -392,6 +313,104 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // Resume
         dataTask.resume()
     }
+    
+    /**
+    Called To Decide Arrows Depending on Direction
+     
+    */
+    private func setWindArrow(direction: String) {
+        
+        //Takes Direction Degrees and Changes to Direction Symbol
+        //Also Adds An Arrow To The Top Right To Show Direction
+        if (Double(direction)! > 348.75 || Double(direction)! < 11.25) {
+            self.directionLabel.text = "N"
+            self.arrowImage.image = #imageLiteral(resourceName: "Narrow")
+        } else if (Double(direction)! >= 11.25 && Double(direction)! < 33.75) {
+            self.directionLabel.text = "NNE"
+            self.arrowImage.image = #imageLiteral(resourceName: "NNEarrow")
+        } else if (Double(direction)! >= 33.75 && Double(direction)! < 56.25) {
+            self.directionLabel.text = "NE"
+            self.arrowImage.image = #imageLiteral(resourceName: "NEarrow")
+        } else if (Double(direction)! >= 56.25 && Double(direction)! < 78.75) {
+            self.directionLabel.text = "ENE"
+            self.arrowImage.image = #imageLiteral(resourceName: "ENEarrow")
+        } else if (Double(direction)! >= 78.75 && Double(direction)! < 101.25) {
+            self.directionLabel.text = "E"
+            self.arrowImage.image = #imageLiteral(resourceName: "Earrow")
+        } else if (Double(direction)! >= 101.25 && Double(direction)! < 123.75) {
+            self.directionLabel.text = "ESE"
+            self.arrowImage.image = #imageLiteral(resourceName: "ESEarrow")
+        } else if (Double(direction)! >= 123.75 && Double(direction)! < 146.25) {
+            self.directionLabel.text = "SE"
+            self.arrowImage.image = #imageLiteral(resourceName: "SEarrow")
+        } else if (Double(direction)! >= 146.25 && Double(direction)! < 168.75) {
+            self.directionLabel.text = "SSE"
+            self.arrowImage.image = #imageLiteral(resourceName: "SSEarrow")
+        } else if (Double(direction)! >= 168.75 && Double(direction)! < 191.25) {
+            self.directionLabel.text = "S"
+            self.arrowImage.image = #imageLiteral(resourceName: "Sarrow")
+        } else if (Double(direction)! >= 191.25 && Double(direction)! < 213.75) {
+            self.directionLabel.text = "SSW"
+            self.arrowImage.image = #imageLiteral(resourceName: "SSWarrow")
+        } else if (Double(direction)! >= 213.75 && Double(direction)! < 236.75) {
+            self.directionLabel.text = "SW"
+            self.arrowImage.image = #imageLiteral(resourceName: "SWarrow")
+        } else if (Double(direction)! >= 236.75 && Double(direction)! < 258.75) {
+            self.directionLabel.text = "WSW"
+            self.arrowImage.image = #imageLiteral(resourceName: "WSWarrow")
+        } else if (Double(direction)! >= 258.75 && Double(direction)! < 281.25) {
+            self.directionLabel.text = "W"
+            self.arrowImage.image = #imageLiteral(resourceName: "Warrow")
+        } else if (Double(direction)! >= 281.25 && Double(direction)! < 303.75) {
+            self.directionLabel.text = "WNW"
+            self.arrowImage.image = #imageLiteral(resourceName: "WNWarrow")
+        } else if (Double(direction)! >= 303.75 && Double(direction)! < 326.25) {
+            self.directionLabel.text = "NW"
+            self.arrowImage.image = #imageLiteral(resourceName: "NWarrow")
+        } else if (Double(direction)! >= 326.25 && Double(direction)! < 348.75) {
+            self.directionLabel.text = "NNW"
+            self.arrowImage.image = #imageLiteral(resourceName: "NNWarrow")
+        }
+    }
+    
+    /**
+     Called To Decide Arrows Depending on Direction
+     
+     */
+    private func setWindDataColor(speed: String) {
+        
+        //Color Palet
+        let myGreenColor = UIColor(
+            red:26.0/255.0,
+            green:230.0/255.0,
+            blue:23.0/255.0,
+            alpha:1.0)
+        
+        let myYellowColor = UIColor(
+            red:255.0/255.0,
+            green:245.0/255.0,
+            blue:0.0/255.0,
+            alpha:1.0)
+        
+        let myRedColor = UIColor(
+            red:255.0/255.0,
+            green:0.0/255.0,
+            blue:0.0/255.0,
+            alpha:1.0)
+        
+        //Chaning Color Depending On Speed
+        if (Double(self.speed)! < 8.0) {
+            self.windLabel.textColor = myGreenColor
+            self.directionLabel.textColor = myGreenColor
+        } else if (Double(self.speed)! < 18.0) {
+            self.windLabel.textColor = myYellowColor
+            self.directionLabel.textColor = myYellowColor
+        } else if (Double(self.speed)! > 20.0) {
+            self.windLabel.textColor = myRedColor
+            self.directionLabel.textColor = myRedColor
+        }
+    }
+
   
     /**
      Called When user is Finished Typing and hits Route
@@ -441,58 +460,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         self.view.endEditing(true)
         self.calculate.isEnabled = true
-    }
-    
-    /**
-    Action for when the Time Box Is Pressed
-    
-    - Parameter sender:   Access to the UIButton "Calculate Route"
-    
-    */
-    private func errorFixing(value: Int, newMinutes : Double ) -> String {
-        
-        var x : String = "\(value)"
-        
-        if (value == 1) {
-            x = "\(value)"
-            x = "01"
-        }
-        if (value == 2) {
-            x = "\(value)"
-            x = "02"
-        }
-        if (value == 3) {
-            x = "\(value)"
-            x = "03"
-        }
-        if (value == 4) {
-            x = "\(value)"
-            x = "04"
-        }
-        if (value == 5) {
-            x = "\(value)"
-            x = "05"
-        }
-        if (value == 6) {
-            x = "\(value)"
-            x = "06"
-        }
-        if (value == 7) {
-            x = "\(value)"
-            x = "07"
-        }
-        if (value == 8) {
-            x = "\(value)"
-            x = "08"
-        }
-        if (value == 9) {
-            x = "\(value)"
-            x = "09"
-        }
-        if (value == 60) {
-            x = "00"
-        }
-        return x
     }
     
     /**
@@ -594,6 +561,58 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 }
             }
         }
+    }
+    
+    /**
+     Action for when the Time Box Is Pressed
+     
+     - Parameter sender:   Access to the UIButton "Calculate Route"
+     
+     */
+    private func errorFixing(value: Int, newMinutes : Double ) -> String {
+        
+        var x : String = "\(value)"
+        
+        if (value == 1) {
+            x = "\(value)"
+            x = "01"
+        }
+        if (value == 2) {
+            x = "\(value)"
+            x = "02"
+        }
+        if (value == 3) {
+            x = "\(value)"
+            x = "03"
+        }
+        if (value == 4) {
+            x = "\(value)"
+            x = "04"
+        }
+        if (value == 5) {
+            x = "\(value)"
+            x = "05"
+        }
+        if (value == 6) {
+            x = "\(value)"
+            x = "06"
+        }
+        if (value == 7) {
+            x = "\(value)"
+            x = "07"
+        }
+        if (value == 8) {
+            x = "\(value)"
+            x = "08"
+        }
+        if (value == 9) {
+            x = "\(value)"
+            x = "09"
+        }
+        if (value == 60) {
+            x = "00"
+        }
+        return x
     }
     
     /**
