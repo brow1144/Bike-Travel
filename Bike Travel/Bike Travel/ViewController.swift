@@ -201,7 +201,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         manager.stopUpdatingLocation()
         
         //Call To Get Weather
-        getWeather(city: "wheatfield,in")
+        getWeather()
         
     }
     
@@ -241,7 +241,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
      - Parameter String:    String of City Name
      
     */
-    func getWeather(city: String) {
+    func getWeather() {
         
         // Simple Network Task
         let session = URLSession.shared

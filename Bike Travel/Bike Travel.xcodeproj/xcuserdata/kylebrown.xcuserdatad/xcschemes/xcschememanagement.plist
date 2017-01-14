@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>BikeTravelNotification.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>2B80D1581E1CC88800ABEF46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2BBEBCB51DF3B3E100894A58</key>
 		<dict>
 			<key>primary</key>

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B80D15B1E1CC88800ABEF46 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B80D15A1E1CC88800ABEF46 /* NotificationCenter.framework */; };
+		2B80D15E1E1CC88800ABEF46 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B80D15D1E1CC88800ABEF46 /* TodayViewController.swift */; };
+		2B80D1611E1CC88800ABEF46 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B80D15F1E1CC88800ABEF46 /* MainInterface.storyboard */; };
+		2B80D1651E1CC88800ABEF46 /* BikeTravelNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2B80D1591E1CC88800ABEF46 /* BikeTravelNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2BBEBCBA1DF3B3E100894A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEBCB91DF3B3E100894A58 /* AppDelegate.swift */; };
 		2BBEBCBC1DF3B3E100894A58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEBCBB1DF3B3E100894A58 /* ViewController.swift */; };
 		2BBEBCBF1DF3B3E100894A58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEBCBD1DF3B3E100894A58 /* Main.storyboard */; };
@@ -15,7 +19,36 @@
 		2BBEBCCD1DF4F6CF00894A58 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBEBCCC1DF4F6CF00894A58 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2B80D1631E1CC88800ABEF46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BBEBCAE1DF3B3E100894A58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B80D1581E1CC88800ABEF46;
+			remoteInfo = BikeTravelNotification;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2B80D1691E1CC88800ABEF46 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2B80D1651E1CC88800ABEF46 /* BikeTravelNotification.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2B80D1591E1CC88800ABEF46 /* BikeTravelNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BikeTravelNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B80D15A1E1CC88800ABEF46 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		2B80D15D1E1CC88800ABEF46 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		2B80D1601E1CC88800ABEF46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		2B80D1621E1CC88800ABEF46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BBEBCB61DF3B3E100894A58 /* Bike Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bike Travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBEBCB91DF3B3E100894A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBEBCBB1DF3B3E100894A58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,6 +60,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2B80D1561E1CC88800ABEF46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B80D15B1E1CC88800ABEF46 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2BBEBCB31DF3B3E100894A58 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +79,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B80D15C1E1CC88800ABEF46 /* BikeTravelNotification */ = {
+			isa = PBXGroup;
+			children = (
+				2B80D15D1E1CC88800ABEF46 /* TodayViewController.swift */,
+				2B80D15F1E1CC88800ABEF46 /* MainInterface.storyboard */,
+				2B80D1621E1CC88800ABEF46 /* Info.plist */,
+			);
+			path = BikeTravelNotification;
+			sourceTree = "<group>";
+		};
 		2BBEBCAD1DF3B3E100894A58 = {
 			isa = PBXGroup;
 			children = (
 				2BBEBCB81DF3B3E100894A58 /* Bike Travel */,
+				2B80D15C1E1CC88800ABEF46 /* BikeTravelNotification */,
 				2BBEBCB71DF3B3E100894A58 /* Products */,
 				2BBEBCCB1DF4F6CE00894A58 /* Frameworks */,
 			);
@@ -51,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				2BBEBCB61DF3B3E100894A58 /* Bike Travel.app */,
+				2B80D1591E1CC88800ABEF46 /* BikeTravelNotification.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				2BBEBCCC1DF4F6CF00894A58 /* CoreLocation.framework */,
+				2B80D15A1E1CC88800ABEF46 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -79,6 +133,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2B80D1581E1CC88800ABEF46 /* BikeTravelNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B80D1681E1CC88800ABEF46 /* Build configuration list for PBXNativeTarget "BikeTravelNotification" */;
+			buildPhases = (
+				2B80D1551E1CC88800ABEF46 /* Sources */,
+				2B80D1561E1CC88800ABEF46 /* Frameworks */,
+				2B80D1571E1CC88800ABEF46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BikeTravelNotification;
+			productName = BikeTravelNotification;
+			productReference = 2B80D1591E1CC88800ABEF46 /* BikeTravelNotification.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		2BBEBCB51DF3B3E100894A58 /* Bike Travel */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2BBEBCC81DF3B3E100894A58 /* Build configuration list for PBXNativeTarget "Bike Travel" */;
@@ -86,10 +157,12 @@
 				2BBEBCB21DF3B3E100894A58 /* Sources */,
 				2BBEBCB31DF3B3E100894A58 /* Frameworks */,
 				2BBEBCB41DF3B3E100894A58 /* Resources */,
+				2B80D1691E1CC88800ABEF46 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2B80D1641E1CC88800ABEF46 /* PBXTargetDependency */,
 			);
 			name = "Bike Travel";
 			productName = "Bike Travel";
@@ -102,10 +175,15 @@
 		2BBEBCAE1DF3B3E100894A58 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Kyle Brown";
 				TargetAttributes = {
+					2B80D1581E1CC88800ABEF46 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 6R43YP984W;
+						ProvisioningStyle = Automatic;
+					};
 					2BBEBCB51DF3B3E100894A58 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 6R43YP984W;
@@ -127,11 +205,20 @@
 			projectRoot = "";
 			targets = (
 				2BBEBCB51DF3B3E100894A58 /* Bike Travel */,
+				2B80D1581E1CC88800ABEF46 /* BikeTravelNotification */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2B80D1571E1CC88800ABEF46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B80D1611E1CC88800ABEF46 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2BBEBCB41DF3B3E100894A58 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,6 +232,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2B80D1551E1CC88800ABEF46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B80D15E1E1CC88800ABEF46 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2BBEBCB21DF3B3E100894A58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -156,7 +251,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2B80D1641E1CC88800ABEF46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2B80D1581E1CC88800ABEF46 /* BikeTravelNotification */;
+			targetProxy = 2B80D1631E1CC88800ABEF46 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		2B80D15F1E1CC88800ABEF46 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B80D1601E1CC88800ABEF46 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		2BBEBCBD1DF3B3E100894A58 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -176,6 +287,35 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2B80D1661E1CC88800ABEF46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6R43YP984W;
+				INFOPLIST_FILE = BikeTravelNotification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebrown.Bike-Travel.BikeTravelNotification";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2B80D1671E1CC88800ABEF46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6R43YP984W;
+				ENABLE_NS_ASSERTIONS = NO;
+				INFOPLIST_FILE = BikeTravelNotification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebrown.Bike-Travel.BikeTravelNotification";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		2BBEBCC61DF3B3E100894A58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -273,6 +413,7 @@
 		2BBEBCC91DF3B3E100894A58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6R43YP984W;
 				INFOPLIST_FILE = "Bike Travel/Info.plist";
@@ -287,6 +428,7 @@
 		2BBEBCCA1DF3B3E100894A58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6R43YP984W;
 				INFOPLIST_FILE = "Bike Travel/Info.plist";
@@ -301,6 +443,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2B80D1681E1CC88800ABEF46 /* Build configuration list for PBXNativeTarget "BikeTravelNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B80D1661E1CC88800ABEF46 /* Debug */,
+				2B80D1671E1CC88800ABEF46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2BBEBCB11DF3B3E100894A58 /* Build configuration list for PBXProject "Bike Travel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
