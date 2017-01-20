@@ -9,9 +9,24 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Today Bike Travel.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>2BAE91BE1E32D87000B0F5BA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2BAE91D31E32D95D00B0F5BA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2BBEBCB51DF3B3E100894A58</key>
 		<dict>
 			<key>primary</key>
