@@ -20,6 +20,7 @@
 		2B11A3711E70CE9F002A0E1A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B11A3701E70CE9F002A0E1A /* MessageUI.framework */; };
 		2B11A3731E70CEB6002A0E1A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B11A3721E70CEB6002A0E1A /* StoreKit.framework */; };
 		2B11A3751E70CECA002A0E1A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B11A3741E70CECA002A0E1A /* SystemConfiguration.framework */; };
+		2B20CD9F1E71D3480001A2D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B20CD9E1E71D3480001A2D8 /* GoogleService-Info.plist */; };
 		2BBEBCBA1DF3B3E100894A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEBCB91DF3B3E100894A58 /* AppDelegate.swift */; };
 		2BBEBCBC1DF3B3E100894A58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEBCBB1DF3B3E100894A58 /* ViewController.swift */; };
 		2BBEBCBF1DF3B3E100894A58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEBCBD1DF3B3E100894A58 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		2B11A3701E70CE9F002A0E1A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		2B11A3721E70CEB6002A0E1A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2B11A3741E70CECA002A0E1A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2B20CD9E1E71D3480001A2D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2BBEBCB61DF3B3E100894A58 /* Bike Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bike Travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBEBCB91DF3B3E100894A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBEBCBB1DF3B3E100894A58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				2BBEBCBD1DF3B3E100894A58 /* Main.storyboard */,
 				2BBEBCC01DF3B3E100894A58 /* Assets.xcassets */,
 				2BBEBCC21DF3B3E100894A58 /* LaunchScreen.storyboard */,
+				2B20CD9E1E71D3480001A2D8 /* GoogleService-Info.plist */,
 				2BBEBCC51DF3B3E100894A58 /* Info.plist */,
 			);
 			path = "Bike Travel";
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BBEBCC41DF3B3E100894A58 /* LaunchScreen.storyboard in Resources */,
+				2B20CD9F1E71D3480001A2D8 /* GoogleService-Info.plist in Resources */,
 				2BBEBCC11DF3B3E100894A58 /* Assets.xcassets in Resources */,
 				2BBEBCBF1DF3B3E100894A58 /* Main.storyboard in Resources */,
 			);

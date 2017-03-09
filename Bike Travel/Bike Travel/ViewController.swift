@@ -561,7 +561,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 let x = errorFixing(value: newMinutes, newMinutes: Double(newMinutes))
                 
                 //Chagne Time Box
-                if (hour > 12) {
+                if (hour >= 12) {
                     self.timeLabel.text = ("\(hour - 12)" + ":" + "\(x)" + " " +  "\(y)")
                     self.timeSubLabel.text = "Arrival Time"
                 } else {
