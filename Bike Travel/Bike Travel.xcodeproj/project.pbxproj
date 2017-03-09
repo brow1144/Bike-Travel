@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16E6DCE5102EF6A8A18BA44A /* Pods_Bike_Travel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AE431484C2F16F5D5C3B3B /* Pods_Bike_Travel.framework */; };
 		2B11A35D1E70CCB8002A0E1A /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B11A35C1E70CCB8002A0E1A /* GoogleMobileAds.framework */; };
 		2B11A35F1E70CE31002A0E1A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B11A35E1E70CE31002A0E1A /* AdSupport.framework */; };
 		2B11A3611E70CE3C002A0E1A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B11A3601E70CE3C002A0E1A /* AudioToolbox.framework */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		008300E9A1BDC0894B04032E /* Pods-Bike Travel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bike Travel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bike Travel/Pods-Bike Travel.debug.xcconfig"; sourceTree = "<group>"; };
+		13AE431484C2F16F5D5C3B3B /* Pods_Bike_Travel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bike_Travel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B11A35C1E70CCB8002A0E1A /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		2B11A35E1E70CE31002A0E1A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2B11A3601E70CE3C002A0E1A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -52,6 +55,7 @@
 		2BBEBCC31DF3B3E100894A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2BBEBCC51DF3B3E100894A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BBEBCCC1DF4F6CF00894A58 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		325D5A3DFF52EBF95739541A /* Pods-Bike Travel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bike Travel.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bike Travel/Pods-Bike Travel.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 				2B11A35F1E70CE31002A0E1A /* AdSupport.framework in Frameworks */,
 				2B11A35D1E70CCB8002A0E1A /* GoogleMobileAds.framework in Frameworks */,
 				2BBEBCCD1DF4F6CF00894A58 /* CoreLocation.framework in Frameworks */,
+				16E6DCE5102EF6A8A18BA44A /* Pods_Bike_Travel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,7 @@
 				2BBEBCB81DF3B3E100894A58 /* Bike Travel */,
 				2BBEBCB71DF3B3E100894A58 /* Products */,
 				2BBEBCCB1DF4F6CE00894A58 /* Frameworks */,
+				5CEE651476B998FF8EF43543 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,8 +133,18 @@
 				2B11A35E1E70CE31002A0E1A /* AdSupport.framework */,
 				2B11A35C1E70CCB8002A0E1A /* GoogleMobileAds.framework */,
 				2BBEBCCC1DF4F6CF00894A58 /* CoreLocation.framework */,
+				13AE431484C2F16F5D5C3B3B /* Pods_Bike_Travel.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5CEE651476B998FF8EF43543 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				008300E9A1BDC0894B04032E /* Pods-Bike Travel.debug.xcconfig */,
+				325D5A3DFF52EBF95739541A /* Pods-Bike Travel.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +154,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2BBEBCC81DF3B3E100894A58 /* Build configuration list for PBXNativeTarget "Bike Travel" */;
 			buildPhases = (
+				886861DBC9CE2503A90D9B40 /* [CP] Check Pods Manifest.lock */,
 				2BBEBCB21DF3B3E100894A58 /* Sources */,
 				2BBEBCB31DF3B3E100894A58 /* Frameworks */,
 				2BBEBCB41DF3B3E100894A58 /* Resources */,
+				B3F4575A9EA90D4F1C01CAFB /* [CP] Embed Pods Frameworks */,
+				6A63230FF0490D0786E41FB5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,6 +218,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6A63230FF0490D0786E41FB5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bike Travel/Pods-Bike Travel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		886861DBC9CE2503A90D9B40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B3F4575A9EA90D4F1C01CAFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bike Travel/Pods-Bike Travel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2BBEBCB21DF3B3E100894A58 /* Sources */ = {
@@ -328,6 +395,7 @@
 		};
 		2BBEBCC91DF3B3E100894A58 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 008300E9A1BDC0894B04032E /* Pods-Bike Travel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6R43YP984W;
@@ -346,6 +414,7 @@
 		};
 		2BBEBCCA1DF3B3E100894A58 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 325D5A3DFF52EBF95739541A /* Pods-Bike Travel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6R43YP984W;

@@ -1,0 +1,6 @@
+framework module Pods_Bike_Travel {
+  umbrella header "Pods-Bike Travel-umbrella.h"
+
+  export *
+  module * { export * }
+}
