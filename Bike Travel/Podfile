@@ -8,5 +8,6 @@ target 'Bike Travel' do
   # Pods for Bike Travel
 
   pod 'Firebase/Core'
+  pod 'Firebase/AdMob'
 
 end
