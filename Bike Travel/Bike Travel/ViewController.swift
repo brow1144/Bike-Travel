@@ -11,8 +11,11 @@ import UIKit
 import MapKit
 import CoreLocation
 import UserNotifications
+import GoogleMobileAds
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, GADBannerViewDelegate {
+    
+    @IBOutlet weak var banner: GADBannerView!
     
     //UI Variables
     @IBOutlet weak var searchBar: UITextField!
@@ -70,6 +73,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        banner.delegate = self
+        banner.adUnitID = "ca-app-pub-1141846650335357/8533960021"
+        banner.rootViewController = self
+        banner.load(GADRequest())
+        
+        
         self.myMap.delegate = self
         
         //Make Calculate Route Button Un-Clickable 
@@ -99,7 +109,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         //Set Up Long Press Functionality
         longPress()
-      
     }
     
     /**

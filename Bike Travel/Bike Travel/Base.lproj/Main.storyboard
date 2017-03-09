@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -161,11 +161,16 @@
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-oC-j54" customClass="GADBannerView">
+                                <rect key="frame" x="27" y="308" width="320" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zBX-zl-7kf" firstAttribute="top" secondItem="4tj-8M-gUi" secondAttribute="bottom" constant="5" id="BLc-jq-04U"/>
                             <constraint firstItem="zBX-zl-7kf" firstAttribute="top" secondItem="ymM-ew-kcf" secondAttribute="bottom" constant="13" id="BNw-Yn-C2M"/>
+                            <constraint firstItem="4tj-8M-gUi" firstAttribute="top" secondItem="fLs-oC-j54" secondAttribute="bottom" constant="140" id="CBa-eq-qUp"/>
                             <constraint firstItem="AaX-R0-yT3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EsS-Pb-uiA"/>
                             <constraint firstItem="aJa-rV-4Qo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="H5n-jf-tYt"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AaX-R0-yT3" secondAttribute="bottom" id="ID9-Pz-WSl"/>
@@ -176,9 +181,12 @@
                             <constraint firstItem="zBX-zl-7kf" firstAttribute="top" secondItem="voj-Wq-BoY" secondAttribute="bottom" constant="34" id="Qdr-AJ-9xv"/>
                             <constraint firstItem="AaX-R0-yT3" firstAttribute="top" secondItem="zou-fT-KSE" secondAttribute="bottom" constant="33" id="Qn5-Dj-W9a"/>
                             <constraint firstAttribute="trailing" secondItem="kEk-zK-ce9" secondAttribute="trailing" id="Tqe-oX-zMS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fLs-oC-j54" secondAttribute="trailing" constant="12" id="Uv3-1N-yLp"/>
+                            <constraint firstItem="fLs-oC-j54" firstAttribute="top" secondItem="Y86-2o-xB6" secondAttribute="bottom" constant="210" id="W8M-H1-bwY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ymM-ew-kcf" secondAttribute="trailing" constant="4" id="aAg-5a-esU"/>
                             <constraint firstAttribute="trailing" secondItem="AaX-R0-yT3" secondAttribute="trailing" id="aBe-tr-1hM"/>
                             <constraint firstItem="hP8-ft-ojh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="azd-d5-9TQ"/>
+                            <constraint firstItem="fLs-oC-j54" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="11" id="bga-dI-tbm"/>
                             <constraint firstItem="4tj-8M-gUi" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="fKy-as-BAq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zou-fT-KSE" secondAttribute="trailing" constant="15" id="hJ9-iB-4sW"/>
                             <constraint firstItem="hP8-ft-ojh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hoh-Cm-QQ3"/>
@@ -201,6 +209,7 @@
                     </view>
                     <connections>
                         <outlet property="arrowImage" destination="pOS-Kb-sBA" id="0vK-Ja-i2v"/>
+                        <outlet property="banner" destination="fLs-oC-j54" id="2cY-4e-0Jj"/>
                         <outlet property="calculate" destination="2dD-xO-KBn" id="JkS-fJ-MMp"/>
                         <outlet property="directionLabel" destination="mgK-vk-IkM" id="MSz-wd-stQ"/>
                         <outlet property="distanceBox" destination="zBX-zl-7kf" id="c3R-8H-0oL"/>
