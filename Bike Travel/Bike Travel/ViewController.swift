@@ -138,7 +138,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         content.subtitle = "Wana go for a bike ride?"
         content.body = "Switch over to Bike Travel to get the most accurate bike travel time and current speed while on the bike ride!"
         content.badge = 1
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 604800, repeats: false)
         let request = UNNotificationRequest(identifier: "Come Back!", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
