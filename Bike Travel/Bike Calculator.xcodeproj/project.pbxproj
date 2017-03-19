@@ -47,7 +47,7 @@
 		2B11A3721E70CEB6002A0E1A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2B11A3741E70CECA002A0E1A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2B20CD9E1E71D3480001A2D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		2BBEBCB61DF3B3E100894A58 /* Bike Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bike Travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BBEBCB61DF3B3E100894A58 /* Bike Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bike Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBEBCB91DF3B3E100894A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBEBCBB1DF3B3E100894A58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2BBEBCBE1DF3B3E100894A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		2BBEBCB71DF3B3E100894A58 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2BBEBCB61DF3B3E100894A58 /* Bike Travel.app */,
+				2BBEBCB61DF3B3E100894A58 /* Bike Calculator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,9 +150,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2BBEBCB51DF3B3E100894A58 /* Bike Travel */ = {
+		2BBEBCB51DF3B3E100894A58 /* Bike Calculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2BBEBCC81DF3B3E100894A58 /* Build configuration list for PBXNativeTarget "Bike Travel" */;
+			buildConfigurationList = 2BBEBCC81DF3B3E100894A58 /* Build configuration list for PBXNativeTarget "Bike Calculator" */;
 			buildPhases = (
 				886861DBC9CE2503A90D9B40 /* [CP] Check Pods Manifest.lock */,
 				2BBEBCB21DF3B3E100894A58 /* Sources */,
@@ -165,9 +165,9 @@
 			);
 			dependencies = (
 			);
-			name = "Bike Travel";
+			name = "Bike Calculator";
 			productName = "Bike Travel";
-			productReference = 2BBEBCB61DF3B3E100894A58 /* Bike Travel.app */;
+			productReference = 2BBEBCB61DF3B3E100894A58 /* Bike Calculator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -182,12 +182,12 @@
 				TargetAttributes = {
 					2BBEBCB51DF3B3E100894A58 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 6R43YP984W;
+						DevelopmentTeam = X9TV8QPSS3;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 2BBEBCB11DF3B3E100894A58 /* Build configuration list for PBXProject "Bike Travel" */;
+			buildConfigurationList = 2BBEBCB11DF3B3E100894A58 /* Build configuration list for PBXProject "Bike Calculator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -200,7 +200,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2BBEBCB51DF3B3E100894A58 /* Bike Travel */,
+				2BBEBCB51DF3B3E100894A58 /* Bike Calculator */,
 			);
 		};
 /* End PBXProject section */
@@ -398,14 +398,15 @@
 			baseConfigurationReference = 008300E9A1BDC0894B04032E /* Pods-Bike Travel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6R43YP984W;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = X9TV8QPSS3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Bike Travel/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebrown.Bike-Travel";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kylebrown.BikeCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -417,14 +418,15 @@
 			baseConfigurationReference = 325D5A3DFF52EBF95739541A /* Pods-Bike Travel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6R43YP984W;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = X9TV8QPSS3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Bike Travel/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kylebrown.Bike-Travel";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kylebrown.BikeCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -434,7 +436,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2BBEBCB11DF3B3E100894A58 /* Build configuration list for PBXProject "Bike Travel" */ = {
+		2BBEBCB11DF3B3E100894A58 /* Build configuration list for PBXProject "Bike Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2BBEBCC61DF3B3E100894A58 /* Debug */,
@@ -443,7 +445,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2BBEBCC81DF3B3E100894A58 /* Build configuration list for PBXNativeTarget "Bike Travel" */ = {
+		2BBEBCC81DF3B3E100894A58 /* Build configuration list for PBXNativeTarget "Bike Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2BBEBCC91DF3B3E100894A58 /* Debug */,
